@@ -3,6 +3,7 @@ import EButtonTypeList from 'Components/Button/Types/EButtonTypeList'
 import FormCheckbox from 'Components/Form/Checkbox'
 import FormInput from 'Components/Form/Input'
 import EInputTypes from 'Components/Form/Input/Types/EInputTypes'
+import FormRadio from 'Components/Form/Radio'
 import React from 'react'
 
 const Login = (): JSX.Element => {
@@ -23,6 +24,14 @@ const Login = (): JSX.Element => {
                 value='test'
                 onChange={() => console.log('input')}
                 type={EInputTypes.PASSWORD}
+            />
+            <FormRadio
+                onChange={() => console.log('radio')}
+                options={[{
+                    label: 'test',
+                    value: 1,
+                }]}
+                value={1}
             />
         </div>
     )
