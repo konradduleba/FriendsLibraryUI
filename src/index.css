@@ -9,3 +9,13 @@
   box-sizing: border-box;
   font-family: 'Montserrat';
 }
+
+.main-app-wrapper {
+  min-height: 100vh;
+  background-color: #F8F9FA;
+}
+
+h1 {
+  color: #3A495F;
+  font-size: 32px;
+}
