@@ -1,3 +1,4 @@
+import NavBar from 'Components/NavBar';
 import { TokenContext } from 'Context/Token';
 import { useContext } from 'react';
 import { BrowserRouter as Router, Switch, Redirect } from "react-router-dom";
@@ -10,9 +11,12 @@ const AppRoutesHandler = () => {
     return (
         <Router>
             <div className='main-app-wrapper'>
+                {!isLoggedIn && <NavBar />}
                 <Switch>
                     <Redirect exact from="/" to={isLoggedIn ? "/dashboard" : "/login"} />
-                    {isLoggedIn ? <Authenticated /> : <GlobalRoutes />}
+                    <div className='page-wrapper'>
+                        {isLoggedIn ? <Authenticated /> : <GlobalRoutes />}
+                    </div>
                 </Switch>
             </div>
         </Router>

@@ -134,3 +134,12 @@
         }
     }
 }
+
+@media screen and (max-width: 480px) {
+    .button-wrapper {
+        button {
+            padding: 1.5*$base-pixel-size 5*$base-pixel-size;
+            width: 100%;
+        }
+    }
+}

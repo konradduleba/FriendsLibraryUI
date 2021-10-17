@@ -1,4 +1,3 @@
-import { appName, appShortcutName } from 'Utils/Constants/appInfo'
 import checkIsMobileView from 'Utils/Functions/checkIsMobileView'
 import useWindowSize from 'Utils/Functions/useWindowSize'
 import DesktopView from './Components/DesktopView'
@@ -11,16 +10,11 @@ const NavBar = () => {
 
     return (
         <div className='nav-bar-wrapper'>
-            <div className='information'>
-                <h1>{isMobileView ? appShortcutName : appName}</h1>
-            </div>
-            <div className='options'>
-                {isMobileView ?
-                    <MobileView />
-                    :
-                    <DesktopView />
-                }
-            </div>
+            {isMobileView ?
+                <MobileView />
+                :
+                <DesktopView />
+            }
         </div>
     )
 }

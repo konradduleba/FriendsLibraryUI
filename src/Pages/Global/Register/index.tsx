@@ -14,8 +14,6 @@ import EApiMethods from 'Utils/Types/EApiMethods'
 import IMessageToTheUser from './Types/IMessageToTheUser'
 import MessageToTheUser from './Components/MessageToTheUser'
 import PasswordValidator from './Components/PasswordValidator'
-import useWindowSize from 'Utils/Functions/useWindowSize'
-import checkIsMobileView from 'Utils/Functions/checkIsMobileView'
 import './Styles/Register.scss'
 
 const Register = (): JSX.Element => {
@@ -31,8 +29,6 @@ const Register = (): JSX.Element => {
         message: ''
     })
     const [passwordValidator, setPasswordValidator] = useState<IPasswordValidator[] | []>([])
-    const { width } = useWindowSize()
-    const isMobileView = checkIsMobileView(width)
 
     const { email, password, name, lastname } = signUpCredentials
 
@@ -93,9 +89,9 @@ const Register = (): JSX.Element => {
 
     return (
         <div className='sign-up-page-wrapper'>
-            {!isMobileView && <div className='information'>
+            <div className='information'>
                 <p>Contact with your friends without the limits</p>
-            </div>}
+            </div>
             <div className='form-container'>
                 <MessageToTheUser {...messageToTheUser} />
                 <div className='form-content'>

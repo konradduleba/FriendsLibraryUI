@@ -20,6 +20,19 @@
   background-color: #F8F9FA;
 }
 
+@media screen and (max-width: 480px) {
+  .page-wrapper {
+    padding-top: 87px;
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
 h1 {
   color: #3A495F;
   font-size: 32px;

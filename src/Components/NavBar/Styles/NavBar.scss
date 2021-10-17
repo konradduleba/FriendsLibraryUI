@@ -16,18 +16,14 @@
 @media screen and (max-width: 480px) {
     .nav-bar-wrapper {
         padding: 3*$base-pixel-size;
-        position: relative;
+        position: fixed;
 
         .options {
             display: flex;
             flex-direction: row;
             align-items: center;
 
-            .menu-burger {
-                width: 4*$base-pixel-size;
-            }
-
-            .menu-opened {
+            img {
                 width: 3*$base-pixel-size;
             }
 
