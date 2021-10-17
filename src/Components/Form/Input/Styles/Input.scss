@@ -12,9 +12,10 @@
         margin-bottom: $base-pixel-size;
         font-size: 2*$base-pixel-size;
 
-        // span {
-        //     font-family: "PoppinsBold";
-        // }
+        span {
+            font-family: "MontserratBold";
+            color: #3A495F;
+        }
 
         a {
             color: $link-color;
@@ -27,6 +28,7 @@
         padding: $base-pixel-size - 2px $base-pixel-size $base-pixel-size - 2px 2*$base-pixel-size;
         border: 1.5px solid #D4E2EA;
         border-radius: 4px;
+        height: 5*$base-pixel-size;
 
         input {
             font-size: 2*$base-pixel-size;
