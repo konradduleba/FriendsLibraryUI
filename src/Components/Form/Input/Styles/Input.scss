@@ -1,0 +1,67 @@
+@import 'Utils/Styles/variables.scss';
+
+.form-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    label {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: $base-pixel-size;
+        font-size: 2*$base-pixel-size;
+
+        // span {
+        //     font-family: "PoppinsBold";
+        // }
+
+        a {
+            color: $link-color;
+        }
+    }
+
+    .input-content-container {
+        display: flex;
+        flex-direction: row;
+        padding: $base-pixel-size - 2px $base-pixel-size $base-pixel-size - 2px 2*$base-pixel-size;
+        border: 1.5px solid #D4E2EA;
+        border-radius: 4px;
+
+        input {
+            font-size: 2*$base-pixel-size;
+            width: 100%;
+            border: none;
+            outline: none;
+
+            &::placeholder {
+                color: #7E94A2;
+            }
+        }
+
+        img {
+            margin-left: $base-pixel-size;
+            cursor: pointer;
+        }
+
+        &:hover {
+            border-color: #7E94A2;
+        }
+
+        &:focus-within {
+            border-color: #3D8EBB;
+        }
+
+        &.filled {
+            border-color: #3A495F;
+        }
+    }
+
+
+
+    &.error {
+        .input-content-container {
+            border-color: $error-message-color;
+        }
+    }
+}
