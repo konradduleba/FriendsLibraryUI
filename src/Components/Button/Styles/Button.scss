@@ -3,7 +3,7 @@
 .button-wrapper {
     button {
         font-size: 2*$base-pixel-size;
-        padding: $base-pixel-size - 2px 5*$base-pixel-size;
+        padding: $base-pixel-size 5*$base-pixel-size;
         border-radius: 4px;
         border: 1.5px solid #fff;
         cursor: pointer;

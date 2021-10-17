@@ -2,19 +2,21 @@
 
 .nav-bar-wrapper {
     width: 100%;
-    box-shadow: 0px 1px 18px rgba(162, 181, 193, 0.3);
+    box-shadow: 0px 1px 18px 0px #A2B5C14D;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding: 3*$base-pixel-size 10*$base-pixel-size;
     align-items: center;
+    background-color: #FFF;
+    z-index: 2;
+    position: relative;
 }
 
 @media screen and (max-width: 480px) {
     .nav-bar-wrapper {
         padding: 3*$base-pixel-size;
         position: relative;
-        background-color: #FFF;
 
         .options {
             display: flex;
