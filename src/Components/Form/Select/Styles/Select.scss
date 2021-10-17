@@ -1,0 +1,93 @@
+@import 'Utils/Styles/variables.scss';
+
+.form-select-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    user-select: none;
+
+    label {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: $base-pixel-size;
+        font-size: 2*$base-pixel-size;
+
+        // span {
+        //     font-family: "PoppinsBold";
+        // }
+
+        a {
+            color: $link-color;
+        }
+    }
+
+    .select-container {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+        .value-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            box-sizing: border-box;
+            padding: $base-pixel-size - 2px 2*$base-pixel-size $base-pixel-size - 2px 2*$base-pixel-size - 2px;
+            border: 1.5px solid #D4E2EA;
+            border-radius: 4px;
+            cursor: pointer;
+
+            &.selected {
+                background-color: #F2F7FA;
+                border-radius: 0;
+                border-color: #F2F7FA;
+            }
+
+            &:hover {
+                border-color: #7E94A2;
+                background-color: #FFF;
+            }
+
+            &.opened {
+                border-color: #7E94A2;
+                background-color: #FFF;
+                border-radius: 4px;
+
+                img {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .placeholder {
+                color: #7E94A1;
+            }
+        }
+
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #7E94A2;
+            border-radius: 4px;
+            background-color: #FFF;
+            box-sizing: border-box;
+            padding: $base-pixel-size 0;
+            margin-top: $base-pixel-size / 2;
+            top: 5*$base-pixel-size;
+            position: absolute;
+            width: 100%;
+
+            .single-option {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                box-sizing: border-box;
+                padding: 12px 2*$base-pixel-size;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: #F2F7FA;
+                }
+            }
+        }
+    }
+}
