@@ -1,0 +1,72 @@
+@import 'Utils/Styles/variables.scss';
+
+.terms-page-wrapper {
+    padding: 5*$base-pixel-size;
+
+    .info-container {
+        margin-bottom: 5*$base-pixel-size;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        p {
+            padding: 3*$base-pixel-size;
+        }
+
+        .spaces-between-text {
+            p {
+                padding: $base-pixel-size 3*$base-pixel-size 0;
+
+                &:first-child {
+                    padding-top: 3*$base-pixel-size;
+                }
+
+                &:last-child {
+                    padding-bottom: 3*$base-pixel-size;
+                }
+            }
+        }
+
+        a {
+            color: $link-color;
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .terms-page-wrapper {
+        padding: 0;
+
+        .info-container {
+            margin-bottom: 2*$base-pixel-size;
+
+            p {
+
+                padding: 3*$base-pixel-size;
+            }
+
+            h1 {
+                padding: 3*$base-pixel-size;
+            }
+
+            .spaces-between-text {
+                p {
+                    padding: $base-pixel-size 3*$base-pixel-size 0;
+
+                    &:first-child {
+                        padding-top: 3*$base-pixel-size;
+                    }
+
+                    &:last-child {
+                        padding-bottom: 3*$base-pixel-size;
+                    }
+                }
+            }
+        }
+
+        .button-wrapper {
+            padding: 0 3*$base-pixel-size 3*$base-pixel-size;
+        }
+    }
+}
