@@ -5,7 +5,7 @@ export default interface IInput {
   isRequired?: boolean;
   placeholder?: string;
   header?: string;
-  headerChildren?: JSX.Element;
+  headerChildren?: JSX.Element | null;
   value: string;
   onChange: (value: string) => void;
   errorMessage?: string;

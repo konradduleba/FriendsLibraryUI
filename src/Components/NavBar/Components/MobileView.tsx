@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import MenuOpenIcon from 'Assets/Icons/burger-menu.svg'
-import MenuCloseIcon from 'Assets/Icons/cancel-icon.svg'
+import MenuCloseIcon from 'Assets/Icons/cancel-white.svg'
 import Menu from './Menu'
 import { menuList } from '../Utils/menuList'
 import Information from './Information'
@@ -16,12 +16,13 @@ const MobileView = () => {
         <>
             <Information />
             <div className='options'>
-                <img
-                    src={isMenuOpen ? MenuCloseIcon : MenuOpenIcon}
-                    alt='menu'
-                    className={isMenuOpen ? 'menu-opened' : 'menu-burger'}
-                    onClick={menuVisibilityToggler}
-                />
+                <div className={`${isMenuOpen ? 'menu-opened' : 'menu-closed'} menu-burger`}
+                    onClick={menuVisibilityToggler}>
+                    <img
+                        src={isMenuOpen ? MenuCloseIcon : MenuOpenIcon}
+                        alt='menu'
+                    />
+                </div>
                 {isMenuOpen && <Menu
                     menuList={menuList}
                     onCloseMenu={() => setIsMenuOpen(false)}

@@ -1,4 +1,4 @@
 export default interface IHeader {
     title?: string;
-    children?: JSX.Element
+    children?: JSX.Element | null;
 }

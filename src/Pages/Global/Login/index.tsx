@@ -2,89 +2,128 @@ import Button from "Components/Button";
 import EButtonTypeList from "Components/Button/Types/EButtonTypeList";
 import FormInput from "Components/Form/Input";
 import EInputTypes from "Components/Form/Input/Types/EInputTypes";
-import React, { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import ILoginCredentials from "./Types/ILoginCredentials";
-import "./Styles/Login.scss";
 import { Link } from "react-router-dom";
 import useWindowSize from "Utils/Functions/useWindowSize";
 import checkIsMobileView from "Utils/Functions/checkIsMobileView";
-import sendRequest from "Authentication/sendRequest";
-import EApiMethods from "Utils/Types/EApiMethods";
 import { TokenContext } from "Context/Token";
+import IValidators from "./Types/IValidators";
+import checkValidation from "../Register/Functions/checkValidation";
+import InputValidatorMessages from "../Register/Components/InputValidatorMessages";
+import MessageToTheUser from "./Components/MessageToTheUser";
+import IMessageToTheUser from "../Register/Types/IMessageToTheUser";
+import checkIfCanLogIn from "./Functions/checkIfCanLogIn";
+import "./Styles/Login.scss";
 
 const Login = (): JSX.Element => {
-  const { loginUser } = useContext(TokenContext);
-  const { width } = useWindowSize();
-  const isMobileView = checkIsMobileView(width);
+    const { loginUser } = useContext(TokenContext);
+    const { width } = useWindowSize();
+    const isMobileView = checkIsMobileView(width);
+    const [loginCredentials, setUpLoginCredentials] = useState<ILoginCredentials>({
+        email: "",
+        password: "",
+    });
+    const [validators, setValidators] = useState<IValidators>({
+        password: [],
+        email: []
+    })
+    const userMessageRef = useRef<null | HTMLDivElement>(null)
+    const [messageToTheUser, setMessageToTheUser] = useState<IMessageToTheUser>({
+        isSuccess: false,
+        message: ''
+    })
 
-  const [loginCredentials, setUpLoginCredentials] = useState<ILoginCredentials>(
-    {
-      email: "",
-      password: "",
+    const onLoginUser = async () => {
+        const data = { ...loginCredentials }
+
+        const result = loginUser && await loginUser(data)
+
+        if (!result) {
+            return null
+        }
+
+        const { error } = result
+
+        return setMessageToTheUser({
+            isSuccess: false,
+            message: error
+        })
     }
-  );
 
-  const handleLogIn = async () => {
-    const data = { ...loginCredentials };
-    const result = loginUser && (await loginUser(data));
-    console.log(result);
-  };
+    const onLoginIn = async () => {
+        const canCreate = checkIfCanLogIn(validators) && (email && password)
 
-  const updateLoginCredentials = (key: string, value: string) => {
-    setUpLoginCredentials((prevState) => ({
-      ...prevState,
-      [key]: value,
-    }));
-  };
+        if (!canCreate) {
+            return setMessageToTheUser({
+                isSuccess: false,
+                message: 'You need to fill all of the fields'
+            })
+        }
 
-  const forgotPasswordHeader = (
-    <Link className="forgot-password-link" to="/forgot-password">
-      Forgot your password?
-    </Link>
-  );
+        return onLoginUser()
+    }
 
-  return (
-    <div className="login-page-wrapper">
-      <div className="login-box">
-        <div className="content">
-          <h1 className="title">Log in</h1>
-          <div className="form">
-            <FormInput
-              header="Email"
-              type={EInputTypes.TEXT}
-              isRequired={true}
-              onChange={(value) => updateLoginCredentials("email", value)}
-              value={loginCredentials.email}
-            />
-            <FormInput
-              headerChildren={isMobileView ? undefined : forgotPasswordHeader}
-              header="Password"
-              type={EInputTypes.PASSWORD}
-              isRequired={true}
-              onChange={(value) => updateLoginCredentials("password", value)}
-              value={loginCredentials.password}
-            />
-            {isMobileView && forgotPasswordHeader}
-            <Button
-              onClick={() => handleLogIn()}
-              type={EButtonTypeList.PRIMARY}
-              value="Log in"
-              disabled={
-                loginCredentials.email !== "" &&
-                loginCredentials.password !== ""
-                  ? false
-                  : true
-              }
-            />
-          </div>
+    const updateLoginCredentials = (key: string, value: string) => {
+        setUpLoginCredentials((prevState) => ({
+            ...prevState,
+            [key]: value,
+        }));
+    };
+
+    const goThroughtValidators = (key: string, value: string) => {
+        const validations = checkValidation(key, value)
+
+        setValidators(prevState => ({
+            ...prevState,
+            [key]: validations
+        }))
+
+        return updateLoginCredentials(key, value)
+    }
+
+    const forgotPasswordHeader = <Link to="/forgot-password">Forgot your password?</Link>
+
+    const { email, password } = loginCredentials
+
+    return (
+        <div className='login-page-wrapper' ref={userMessageRef}>
+            <div className='content-container'>
+                <MessageToTheUser {...messageToTheUser} />
+                <h1>Log in</h1>
+                <div className='form'>
+                    <div className='input-container'>
+                        <FormInput
+                            value={email}
+                            onChange={value => goThroughtValidators('email', value)}
+                            type={EInputTypes.TEXT}
+                            header='Email'
+                        />
+                        <InputValidatorMessages inputValidator={validators.email} />
+                    </div>
+                    <div className='input-container'>
+                        <FormInput
+                            value={password}
+                            onChange={value => goThroughtValidators('password', value)}
+                            type={EInputTypes.PASSWORD}
+                            header='Password'
+                            headerChildren={isMobileView ? null : forgotPasswordHeader}
+                        />
+                        <InputValidatorMessages inputValidator={validators.password} />
+                    </div>
+                    <Button
+                        onClick={onLoginIn}
+                        type={EButtonTypeList.PRIMARY}
+                        value="Log in"
+                    />
+                </div>
+                <div className='additional-info'>
+                    <p>Don’t have an account yet?</p>
+                    <Link to="/register">Create an account</Link>
+                </div>
+            </div>
         </div>
-        <div className="footer">
-          <span>Don't have an account yet?</span>
-          <Link to="#">Create an account</Link>
-        </div>
-      </div>
-    </div>
-  );
-};
+    )
+}
 
-export default Login;
+export default Login

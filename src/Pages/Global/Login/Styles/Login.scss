@@ -1,91 +1,125 @@
 @import "Utils/Styles/variables.scss";
 
 .login-page-wrapper {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
+    background-color: #FFF;
 
-  .login-box {
-    width: 50%;
-    max-width: 500px;
-    margin-top: 10 * $base-pixel-size;
-    background-color: white;
-    box-shadow: 0px 6px 16px rgba(54, 121, 157, 0.14);
-
-    .content {
-      padding: 10 * $base-pixel-size;
-
-      .title {
-        margin-bottom: 20px;
-      }
-
-      .form {
-        display: flex;
-        flex-direction: column;
-
-        .form-input-wrapper {
-          margin-bottom: 3 * $base-pixel-size;
-        }
-
-        .button-wrapper {
-          display: flex;
-          justify-content: flex-end;
-        }
-      }
+    a {
+        color: $link-color;
     }
 
-    .footer {
-      padding: 5 * $base-pixel-size 0px;
-      border-top: 1px solid #d4e2ea;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+    .content-container {
+        width: 40%;
+        background-color: #FFF;
+        margin-top: 10*$base-pixel-size;
+        margin-bottom: 10*$base-pixel-size;
+        box-shadow: 0px 6px 16px rgba(54, 121, 157, 0.14);
+        border-radius: 4px;
 
-      span {
-        font-weight: bold;
-        display: block;
-        margin-bottom: 0.5 * $base-pixel-size;
-      }
+        .error-message-container {
+            background-color: $error-message-color;
+        }
+
+        .error-message-container,
+        .success-message-container {
+            width: 100%;
+            padding: 3.5*$base-pixel-size;
+            color: #FFF;
+        }
+
+        .success-message-container {
+            background-color: #44998F;
+        }
+
+        .form {
+            padding: 0 10*$base-pixel-size;
+
+
+            .button-wrapper {
+                display: flex;
+                justify-content: flex-end;
+                margin-bottom: 5*$base-pixel-size;
+            }
+
+            .input-container {
+                .form-input-wrapper {
+                    margin-bottom: $base-pixel-size;
+                }
+
+                .input-validator {
+                    margin-bottom: 3*$base-pixel-size;
+
+                    img {
+                        margin-right: $base-pixel-size;
+                        height: 10px;
+                    }
+
+                    p {
+                        display: flex;
+                        align-items: center;
+                        color: #44998F;
+                        margin-bottom: $base-pixel-size/2;
+                    }
+                }
+            }
+        }
+
+        h1 {
+            padding: 10*$base-pixel-size 10*$base-pixel-size 5*$base-pixel-size;
+            font-family: 'MontserratBold';
+            font-size: 4*$base-pixel-size;
+            color: #3A495F;
+        }
+
+        .additional-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 5*$base-pixel-size;
+            border-top: 2px solid #F2F7FA;
+
+            p {
+                color: #3A495F;
+                font-family: 'MontserratBold';
+                margin-bottom: $base-pixel-size;
+            }
+        }
     }
-  }
 }
 
 @media screen and (max-width: 480px) {
-  .login-page-wrapper {
-    .login-box {
-      width: 100%;
-      margin-top: 0;
-      background-color: transparent;
-      box-shadow: none;
+    .login-page-wrapper {
+        height: calc(100vh - 8*$base-pixel-size);
 
-      .content {
-        padding: 4 * $base-pixel-size 2 * $base-pixel-size;
+        .content-container {
+            width: 100%;
+            margin: 0;
+            box-shadow: unset;
+            background-color: transparent;
 
-        .form {
-          .form-input-wrapper {
-            .input-content-container {
-              input {
-                background-color: transparent;
-              }
+            h1 {
+                padding: 3*$base-pixel-size 3*$base-pixel-size;
             }
-          }
 
-          .button-wrapper {
-            button {
-              width: 100%;
+            .form {
+                padding: 0 3*$base-pixel-size;
+
+                .form-input-wrapper {
+                    .input-content-container {
+                        background-color: #FFF;
+                    }
+
+                    &:nth-child(2) {
+                        margin-bottom: 5*$base-pixel-size;
+                    }
+                }
             }
-          }
 
-          .forgot-password-link {
-            display: block;
-            margin-bottom: 3 * $base-pixel-size;
-          }
+            .additional-info {
+                padding-top: 3*$base-pixel-size;
+                border-top: 0;
+            }
         }
-      }
-
-      .footer {
-        border: none;
-      }
     }
-  }
 }

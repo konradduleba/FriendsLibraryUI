@@ -15,7 +15,7 @@
 
 @media screen and (max-width: 480px) {
     .nav-bar-wrapper {
-        padding: 3*$base-pixel-size;
+        padding: $base-pixel-size $base-pixel-size $base-pixel-size 3*$base-pixel-size;
         position: fixed;
 
         .options {
@@ -23,20 +23,33 @@
             flex-direction: row;
             align-items: center;
 
-            img {
-                width: 3*$base-pixel-size;
+            .menu-burger {
+                padding: 2*$base-pixel-size;
+                border-radius: 4px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 6*$base-pixel-size;
+
+                &.menu-opened {
+                    background: #3D8EBB;
+                }
+
+                img {
+                    height: 2*$base-pixel-size;
+                }
             }
 
             .menu-list {
                 position: fixed;
-                top: 87px;
+                top: 8*$base-pixel-size - 1px;
                 left: 0;
                 width: 100%;
-                height: calc(100vh - 87px);
+                height: calc(100vh - 8*$base-pixel-size);
                 display: flex;
                 flex-direction: column;
                 z-index: 999;
-                background-color: #F8F9FA;
+                background-color: #FFF;
 
                 a {
                     padding: 2*$base-pixel-size 3*$base-pixel-size;
