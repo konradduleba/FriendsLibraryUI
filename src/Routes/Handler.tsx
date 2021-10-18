@@ -2,6 +2,7 @@ import NavBar from 'Components/NavBar';
 import { TokenContext } from 'Context/Token';
 import { useContext } from 'react';
 import { BrowserRouter as Router, Switch, Redirect } from "react-router-dom";
+import ScrollToTop from 'Utils/Functions/ScrollToTop';
 import Authenticated from './Authenticated';
 import GlobalRoutes from './Global';
 
@@ -10,6 +11,7 @@ const AppRoutesHandler = () => {
 
     return (
         <Router>
+            <ScrollToTop />
             <div className='main-app-wrapper'>
                 {!isLoggedIn && <NavBar />}
                 <Switch>

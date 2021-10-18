@@ -1,10 +1,13 @@
-import IPasswordValidator from "../Types/IPasswordValidator";
-import ISignUpCredentials from "../Types/ISignUpCredentials";
 
-const checkIfCanCreateAccount = (validationArray: IPasswordValidator[], { email, lastname, name, password }: ISignUpCredentials): boolean => {
-    const validationPassed = validationArray.filter(({ status }) => status).length === validationArray.length
+import IValidators from "../Types/IValidators";
 
-    return !!(email && lastname && name && password && validationPassed)
+const checkIfCanCreateAccount = ({ email, lastname, name, password }: IValidators): boolean => {
+    const emailValidation = email.filter(({ status }) => status).length === email.length
+    const lastnameValidation = lastname.filter(({ status }) => status).length === lastname.length
+    const nameValidation = name.filter(({ status }) => status).length === name.length
+    const passwordValidation = password.filter(({ status }) => status).length === password.length
+
+    return !!(emailValidation && lastnameValidation && nameValidation && passwordValidation)
 }
 
 export default checkIfCanCreateAccount

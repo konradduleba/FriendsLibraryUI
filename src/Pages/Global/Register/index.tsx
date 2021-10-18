@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useRef, useState } from 'react'
 import ISignUpCredentials from './Types/ISignUpCredentials'
 import Button from 'Components/Button'
 import EButtonTypeList from 'Components/Button/Types/EButtonTypeList'
@@ -6,15 +6,15 @@ import FormInput from 'Components/Form/Input'
 import EInputTypes from 'Components/Form/Input/Types/EInputTypes'
 import FormCheckbox from 'Components/Form/Checkbox'
 import { Link } from 'react-router-dom'
-import IPasswordValidator from './Types/IPasswordValidator'
-import checkPasswordValidation from './Functions/checkPasswordValidation'
 import checkIfCanCreateAccount from './Functions/checkIfCanCreateAccount'
 import sendRequest from 'Authentication/sendRequest'
 import EApiMethods from 'Utils/Types/EApiMethods'
 import IMessageToTheUser from './Types/IMessageToTheUser'
 import MessageToTheUser from './Components/MessageToTheUser'
-import PasswordValidator from './Components/PasswordValidator'
+import InputValidatorMessages from './Components/InputValidatorMessages'
+import checkValidation from './Functions/checkValidation'
 import './Styles/Register.scss'
+import IValidators from './Types/IValidators'
 
 const Register = (): JSX.Element => {
     const [signUpCredentials, setSignUpCredentials] = useState<ISignUpCredentials>({
@@ -28,7 +28,13 @@ const Register = (): JSX.Element => {
         isSuccess: false,
         message: ''
     })
-    const [passwordValidator, setPasswordValidator] = useState<IPasswordValidator[] | []>([])
+    const [validators, setValidators] = useState<IValidators>({
+        password: [],
+        email: [],
+        name: [],
+        lastname: []
+    })
+    const userMessageRef = useRef<null | HTMLDivElement>(null)
 
     const { email, password, name, lastname } = signUpCredentials
 
@@ -39,6 +45,10 @@ const Register = (): JSX.Element => {
         }))
     }
 
+    const moveToTopSmoothly = () => {
+        return userMessageRef.current && userMessageRef.current.scrollIntoView({ behavior: 'smooth' })
+    }
+
     const onSignUp = async () => {
         const data = {
             email,
@@ -46,7 +56,10 @@ const Register = (): JSX.Element => {
             name,
             lastname
         }
+
         const { isSuccess, message } = await sendRequest(EApiMethods.POST, '/user/register', data)
+
+        moveToTopSmoothly()
 
         if (!isSuccess) {
             return setMessageToTheUser({
@@ -62,9 +75,29 @@ const Register = (): JSX.Element => {
     }
 
     const onCreateAccount = async () => {
-        const canCreate = checkIfCanCreateAccount(passwordValidator, signUpCredentials) && agreeWithTerms
+        const canCreate = checkIfCanCreateAccount(validators)
+
+        if (!agreeWithTerms && !canCreate) {
+            moveToTopSmoothly()
+
+            return setMessageToTheUser({
+                isSuccess: false,
+                message: 'You need to agree with terms and fill all of the fields'
+            })
+        }
+
+        if (!agreeWithTerms && canCreate) {
+            moveToTopSmoothly()
+
+            return setMessageToTheUser({
+                isSuccess: false,
+                message: 'You need to agree with terms'
+            })
+        }
 
         if (!canCreate) {
+            moveToTopSmoothly()
+
             return setMessageToTheUser({
                 isSuccess: false,
                 message: 'You need to fill all of the fields'
@@ -79,17 +112,20 @@ const Register = (): JSX.Element => {
         return onSignUp()
     }
 
-    const onPasswordType = (value: string) => {
-        const validations = checkPasswordValidation(value)
+    const goThroughtValidators = (key: string, value: string) => {
+        const validations = checkValidation(key, value)
 
-        setPasswordValidator(validations)
+        setValidators(prevState => ({
+            ...prevState,
+            [key]: validations
+        }))
 
-        return updateSignUpCredentials('password', value)
+        return updateSignUpCredentials(key, value)
     }
 
     return (
         <div className='sign-up-page-wrapper'>
-            <div className='information'>
+            <div className='information' ref={userMessageRef}>
                 <p>Contact with your friends without the limits</p>
             </div>
             <div className='form-container'>
@@ -97,41 +133,45 @@ const Register = (): JSX.Element => {
                 <div className='form-content'>
                     <h1>Sign up</h1>
                     <div className='form'>
-                        <FormInput
-                            value={email}
-                            onChange={value => updateSignUpCredentials('email', value)}
-                            type={EInputTypes.TEXT}
-                            isRequired
-                            header='Email'
-                        />
-                        <div className='password-container'>
+                        <div className='input-container'>
+                            <FormInput
+                                value={email}
+                                onChange={value => goThroughtValidators('email', value)}
+                                type={EInputTypes.TEXT}
+                                header='Email'
+                            />
+                            <InputValidatorMessages inputValidator={validators.email} />
+                        </div>
+                        <div className='input-container'>
                             <FormInput
                                 value={password}
-                                onChange={value => onPasswordType(value)}
+                                onChange={value => goThroughtValidators('password', value)}
                                 type={EInputTypes.PASSWORD}
-                                isRequired
                                 header='Password'
                             />
-                            <PasswordValidator passwordValidator={passwordValidator} />
+                            <InputValidatorMessages inputValidator={validators.password} />
                         </div>
-                        <FormInput
-                            value={name}
-                            onChange={value => updateSignUpCredentials('name', value)}
-                            type={EInputTypes.TEXT}
-                            isRequired
-                            header='Name'
-                        />
-                        <FormInput
-                            value={lastname}
-                            onChange={value => updateSignUpCredentials('lastname', value)}
-                            type={EInputTypes.TEXT}
-                            isRequired
-                            header='Lastname'
-                        />
+                        <div className='input-container'>
+                            <FormInput
+                                value={name}
+                                onChange={value => goThroughtValidators('name', value)}
+                                type={EInputTypes.TEXT}
+                                header='Name'
+                            />
+                            <InputValidatorMessages inputValidator={validators.name} />
+                        </div>
+                        <div className='input-container'>
+                            <FormInput
+                                value={lastname}
+                                onChange={value => goThroughtValidators('lastname', value)}
+                                type={EInputTypes.TEXT}
+                                header='Lastname'
+                            />
+                            <InputValidatorMessages inputValidator={validators.lastname} />
+                        </div>
                         <FormCheckbox
                             value={agreeWithTerms}
                             onChange={value => setAgreeWithTerms(value)}
-                            isRequired
                             header={<p>Agree with <Link to='/terms'>terms and conditions</Link></p>}
                         />
                     </div>

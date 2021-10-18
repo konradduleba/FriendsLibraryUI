@@ -1,7 +1,7 @@
-import IPasswordValidator from "../Types/IPasswordValidator";
+import IInputValidatorMessages from "../Types/IInputValidatorMessages";
 
-const checkPasswordValidation = (password: string) => {
-    const requirementsArray: IPasswordValidator[] = []
+const passwordValidator = (password: string) => {
+    const requirementsArray: IInputValidatorMessages[] = []
 
     const regexNumbers = /\d/
     const regexLowerCase = /[a-z]/
@@ -36,4 +36,4 @@ const checkPasswordValidation = (password: string) => {
     return requirementsArray
 }
 
-export default checkPasswordValidation;
+export default passwordValidator;
