@@ -1,24 +1,9 @@
 @import 'Utils/Styles/variables.scss';
 
-.sign-up-page-wrapper {
-    display: grid;
-    grid-template-columns: 35% 65%;
-    background-color: #FFF;
-    z-index: 9;
-    height: calc(100vh - 87px - 99px);
-
-    .information {
-        background-color: #D4E2EA;
-
-        p {
-            font-size: 3*$base-pixel-size;
-            border-bottom: 1.5px solid #3D8EBB;
-            padding: 5*$base-pixel-size 0 5*$base-pixel-size 10*$base-pixel-size;
-            margin-right: 12*$base-pixel-size;
-            font-family: "MontserratBold";
-            color: #3A495F;
-        }
-    }
+.register-page-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     .error-message-container {
         background-color: $error-message-color;
@@ -35,84 +20,60 @@
         background-color: #44998F;
     }
 
-    .form-container {
+    .form-content {
+        margin-top: 10*$base-pixel-size;
+        width: 50%;
+        background-color: #FFF;
+    }
+
+    h1 {
+        margin-bottom: 5*$base-pixel-size;
+    }
+
+    .form-input-wrapper {
+        margin-bottom: 3*$base-pixel-size;
+    }
+
+    .input-container {
+        .form-input-wrapper {
+            margin-bottom: $base-pixel-size;
+        }
+
+        .input-validator {
+            margin-bottom: 3*$base-pixel-size;
+
+            img {
+                margin-right: $base-pixel-size;
+                height: 10px;
+            }
+
+            p {
+                display: flex;
+                align-items: center;
+                color: #44998F;
+                margin-bottom: $base-pixel-size/2;
+            }
+        }
+    }
+
+    .button-wrapper {
         display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        .form-content {
-            margin-top: 10*$base-pixel-size;
-            width: 50%;
-            background-color: #FFF;
-        }
-
-        h1 {
-            margin-bottom: 5*$base-pixel-size;
-        }
-
-        .form {
-            .form-input-wrapper {
-                margin-bottom: 3*$base-pixel-size;
-            }
-        }
-
-        .input-container {
-            .form-input-wrapper {
-                margin-bottom: $base-pixel-size;
-            }
-
-            .input-validator {
-                margin-bottom: 3*$base-pixel-size;
-
-                img {
-                    margin-right: $base-pixel-size;
-                    height: 10px;
-                }
-
-                p {
-                    display: flex;
-                    align-items: center;
-                    color: #44998F;
-                    margin-bottom: $base-pixel-size/2;
-                }
-            }
-        }
-
-        .button-wrapper {
-            display: flex;
-            justify-content: flex-end;
-            margin-top: 5*$base-pixel-size;
-            margin-bottom: 10*$base-pixel-size;
-        }
-
+        justify-content: flex-end;
+        margin-top: 5*$base-pixel-size;
+        margin-bottom: 10*$base-pixel-size;
     }
 }
 
 @media screen and (max-width: 480px) {
-    .sign-up-page-wrapper {
-        grid-template-columns: 100%;
-
-        .information {
-            background-color: #D4E2EA;
-
-            p {
-                font-size: 2.5*$base-pixel-size;
-                padding: 2*$base-pixel-size 3*$base-pixel-size;
-                border-bottom: 0;
-                margin: 0;
-            }
+    .register-page-wrapper {
+        .form-content {
+            margin-top: $base-pixel-size;
+            padding: 3*$base-pixel-size;
+            width: 100%;
         }
 
-        .form-container {
-            .form-content {
-                margin-top: $base-pixel-size;
-                padding: 3*$base-pixel-size;
-                width: 100%;
-            }
-
-            .button-wrapper {
-                margin-bottom: 0;
-            }
+        .button-wrapper {
+            margin-bottom: 0;
         }
     }
 }

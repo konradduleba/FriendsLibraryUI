@@ -7,8 +7,8 @@ const DesktopView = () => {
     const history = useHistory()
     const { pathname } = useLocation()
 
-    const onClickLogIn = () => {
-        return history.push('/login')
+    const onClickButton = (path: string) => {
+        return history.push(path)
     }
 
     return (
@@ -18,7 +18,12 @@ const DesktopView = () => {
                 {pathname !== '/login' && <Button
                     type={EButtonTypeList.GHOST_BLUE}
                     value='Log In'
-                    onClick={onClickLogIn}
+                    onClick={() => onClickButton('/login')}
+                />}
+                {pathname !== '/register' && <Button
+                    type={EButtonTypeList.PRIMARY}
+                    value='Register'
+                    onClick={() => onClickButton('/register')}
                 />}
             </div>
         </>

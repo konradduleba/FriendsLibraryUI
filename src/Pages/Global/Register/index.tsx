@@ -15,6 +15,7 @@ import InputValidatorMessages from './Components/InputValidatorMessages'
 import checkValidation from './Functions/checkValidation'
 import './Styles/Register.scss'
 import IValidators from './Types/IValidators'
+import GlobalPageTemplate from 'Templates/GlobalPage'
 
 const Register = (): JSX.Element => {
     const [signUpCredentials, setSignUpCredentials] = useState<ISignUpCredentials>({
@@ -124,11 +125,8 @@ const Register = (): JSX.Element => {
     }
 
     return (
-        <div className='sign-up-page-wrapper'>
-            <div className='information' ref={userMessageRef}>
-                <p>Contact with your friends without the limits</p>
-            </div>
-            <div className='form-container'>
+        <GlobalPageTemplate information='Contact with your friends without the limits' reference={userMessageRef}>
+            <div className='register-page-wrapper'>
                 <MessageToTheUser {...messageToTheUser} />
                 <div className='form-content'>
                     <h1>Sign up</h1>
@@ -181,6 +179,17 @@ const Register = (): JSX.Element => {
                         onClick={onCreateAccount}
                     />
                 </div>
+            </div>
+        </GlobalPageTemplate>
+    )
+
+    return (
+        <div className='sign-up-page-wrapper'>
+            <div className='information' ref={userMessageRef}>
+                <p>Contact with your friends without the limits</p>
+            </div>
+            <div className='form-container'>
+
             </div>
         </div>
     )

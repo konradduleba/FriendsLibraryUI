@@ -21,6 +21,6 @@ export const menuList: IMenuList[] = [{
     path: '/privacy'
 },
 {
-    label: 'Contact',
-    path: '/contact'
+    label: 'About',
+    path: '/about'
 }]

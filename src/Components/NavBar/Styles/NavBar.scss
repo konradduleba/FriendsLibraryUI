@@ -11,6 +11,20 @@
     background-color: #FFF;
     z-index: 2;
     position: relative;
+
+    .options {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .button-wrapper {
+            margin-right: 3*$base-pixel-size;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -19,9 +33,6 @@
         position: fixed;
 
         .options {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
 
             .menu-burger {
                 padding: 2*$base-pixel-size;

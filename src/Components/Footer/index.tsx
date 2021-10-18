@@ -15,7 +15,7 @@ const Footer = () => {
     return (
         <div className='footer-wrapper'>
             <div className='menu-list'>
-                <Link to='/contact'>Contact</Link>
+                <Link to='/about'>About</Link>
                 <Link to='/terms'>Terms</Link>
                 <Link to='/privacy'>Privacy</Link>
                 <Link to='/faq'>FAQ</Link>
