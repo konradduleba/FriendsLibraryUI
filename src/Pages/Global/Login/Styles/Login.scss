@@ -3,7 +3,6 @@
 .login-page-wrapper {
     display: flex;
     justify-content: center;
-    background-color: #FFF;
 
     a {
         color: $link-color;
@@ -90,6 +89,7 @@
 @media screen and (max-width: 480px) {
     .login-page-wrapper {
         height: calc(100vh - 8*$base-pixel-size);
+        background-color: #FFF;
 
         .content-container {
             width: 100%;

@@ -1,3 +1,4 @@
+import Footer from 'Components/Footer';
 import NavBar from 'Components/NavBar';
 import { TokenContext } from 'Context/Token';
 import { useContext } from 'react';
@@ -20,6 +21,7 @@ const AppRoutesHandler = () => {
                         {isLoggedIn ? <Authenticated /> : <GlobalRoutes />}
                     </div>
                 </Switch>
+                <Footer />
             </div>
         </Router>
     )
