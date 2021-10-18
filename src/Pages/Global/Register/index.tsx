@@ -75,7 +75,7 @@ const Register = (): JSX.Element => {
     }
 
     const onCreateAccount = async () => {
-        const canCreate = checkIfCanCreateAccount(validators)
+        const canCreate = checkIfCanCreateAccount(validators) && (email && password && name && lastname)
 
         if (!agreeWithTerms && !canCreate) {
             moveToTopSmoothly()
