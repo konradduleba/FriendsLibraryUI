@@ -1,0 +1,40 @@
+@import 'Utils/Styles/variables.scss';
+
+.menu-wrapper {
+    padding: 2*$base-pixel-size;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #FFF;
+    box-shadow: 0px 8px 28px rgba(54, 121, 157, 0.14);
+    z-index: 1;
+
+    .single-menu-item,
+    a {
+        height: 6*$base-pixel-size;
+        width: 6*$base-pixel-size;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        border-radius: 4px;
+        margin-bottom: 2*$base-pixel-size;
+
+        h1 {
+            color: #3a495f;
+            font-size: 32px;
+        }
+
+        &.selected {
+            // box-shadow: 5px 8px 28px rgba(54, 121, 157, 0.14);
+            background-color: #3D8EBB;
+        }
+    }
+
+    .single-menu-item {
+        margin-top: auto;
+        margin-bottom: 0;
+        cursor: pointer;
+        background-color: #3D8EBB;
+    }
+}

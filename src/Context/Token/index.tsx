@@ -9,8 +9,18 @@ import IUseToken from './Types/IUseToken'
 
 export const TokenContext = createContext<IToken>({});
 
+const setTokenToTheAxiosConfig = (token?: string | null) => {
+    if (!token && typeof token !== 'string') {
+        return null
+    }
+
+    return axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+}
+
 const checkLoginStatus = (): boolean => {
     const token = localStorage.getItem('token');
+
+    setTokenToTheAxiosConfig(token)
 
     return !!token;
 }
@@ -36,11 +46,7 @@ export const UseToken = ({ children }: IUseToken): JSX.Element => {
 
         const token = await sendRequest(EApiMethods.POST, '/user/login', data);
 
-        if (typeof token !== 'string') {
-            return token;
-        }
-
-        axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        setTokenToTheAxiosConfig(token)
 
         localStorage.setItem('token', token);
 

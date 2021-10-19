@@ -4,6 +4,7 @@ import RegisterIcon from 'Assets/Icons/register.svg';
 import FaqIcon from 'Assets/Icons/faq.svg';
 import DocsIcon from 'Assets/Icons/docs.svg'
 import InfoIcon from 'Assets/Icons/info.svg'
+import PrivacyIcon from 'Assets/Icons/privacy.svg'
 
 export const menuList: IMenuList[] = [{
     icon: SignInIcon,
@@ -26,7 +27,7 @@ export const menuList: IMenuList[] = [{
     path: '/terms'
 },
 {
-    icon: DocsIcon,
+    icon: PrivacyIcon,
     label: 'Privacy',
     path: '/privacy'
 },

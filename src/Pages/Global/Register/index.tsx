@@ -182,17 +182,6 @@ const Register = (): JSX.Element => {
             </div>
         </GlobalPageTemplate>
     )
-
-    return (
-        <div className='sign-up-page-wrapper'>
-            <div className='information' ref={userMessageRef}>
-                <p>Contact with your friends without the limits</p>
-            </div>
-            <div className='form-container'>
-
-            </div>
-        </div>
-    )
 }
 
 export default Register

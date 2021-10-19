@@ -15,7 +15,8 @@
   font-family: 'Montserrat';
 }
 
-.main-app-wrapper {
+.main-app-wrapper,
+.main-app-wrapper-authenticated {
   min-height: 100vh;
   height: 100%;
   display: flex;
@@ -23,9 +24,21 @@
   background-color: #F8F9FA;
 }
 
+.main-app-wrapper-authenticated {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+}
+
 @media screen and (max-width: 480px) {
-  .page-wrapper {
+
+  .page-wrapper,
+  .page-wrapper-authenticated {
     padding-top: 64px;
+  }
+
+  .main-app-wrapper-authenticated {
+    display: flex;
+    flex-direction: column;
   }
 }
 

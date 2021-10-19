@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import { menuList } from '../Utils/menuList'
 import MenuOpenIcon from 'Assets/Icons/burger-menu.svg'
 import MenuCloseIcon from 'Assets/Icons/cancel-white.svg'
-import Menu from './Menu'
-import { menuList } from '../Utils/menuList'
-import Information from './Information'
+import { useState } from 'react'
+import MenuList from './MenuList'
+import '../Styles/MobileMenu.scss'
 
-const MobileView = () => {
+const MobileMenu = () => {
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
 
     const menuVisibilityToggler = () => {
@@ -13,8 +13,10 @@ const MobileView = () => {
     }
 
     return (
-        <>
-            <Information />
+        <div className='mobile-menu-wrapper'>
+            <div className='information'>
+                <h1>FL</h1>
+            </div>
             <div className='options'>
                 <div className={`${isMenuOpen ? 'menu-opened' : 'menu-closed'} menu-burger`}
                     onClick={menuVisibilityToggler}>
@@ -23,13 +25,13 @@ const MobileView = () => {
                         alt='menu'
                     />
                 </div>
-                {isMenuOpen && <Menu
+                {isMenuOpen && <MenuList
                     menuList={menuList}
                     onCloseMenu={() => setIsMenuOpen(false)}
                 />}
             </div>
-        </>
+        </div>
     )
 }
 
-export default MobileView
+export default MobileMenu
