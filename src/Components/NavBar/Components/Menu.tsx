@@ -1,23 +1,26 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import INavBarMenu from '../Types/INavBarMenu'
 
 const Menu = ({ menuList, onCloseMenu }: INavBarMenu): JSX.Element | null => {
+    const history = useHistory()
+
     if (!menuList || !menuList.length) {
         return null
+    }
+
+    const onElementClick = (path: string) => {
+        history.push(path)
+
+        return onCloseMenu()
     }
 
     return (
         <div className='menu-list'>
             {menuList.map(({ label, path, icon }, index) => (
-                <div className='single-menu-element' onClick={onCloseMenu}>
+                <div className='single-menu-element' onClick={() => onElementClick(path)} key={path + index}>
                     <img src={icon} alt='menu element' />
-                    <Link
-                        to={path}
-                        key={`${index}-${path}-${label}`}
-                    >
-                        {label}
-                    </Link>
+                    <p>{label}</p>
                 </div>
             ))}
         </div>
