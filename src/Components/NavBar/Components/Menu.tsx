@@ -9,13 +9,16 @@ const Menu = ({ menuList, onCloseMenu }: INavBarMenu): JSX.Element | null => {
 
     return (
         <div className='menu-list'>
-            {menuList.map(({ label, path }, index) => (
-                <Link
-                    to={path}
-                    key={`${index}-${path}-${label}`}
-                    onClick={onCloseMenu}>
-                    {label}
-                </Link>
+            {menuList.map(({ label, path, icon }, index) => (
+                <div className='single-menu-element' onClick={onCloseMenu}>
+                    <img src={icon} alt='menu element' />
+                    <Link
+                        to={path}
+                        key={`${index}-${path}-${label}`}
+                    >
+                        {label}
+                    </Link>
+                </div>
             ))}
         </div>
     )

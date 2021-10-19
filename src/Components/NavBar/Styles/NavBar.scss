@@ -61,12 +61,20 @@
                 flex-direction: column;
                 z-index: 999;
                 background-color: #FFF;
+                padding-top: $base-pixel-size;
 
-                a {
-                    padding: 2*$base-pixel-size 3*$base-pixel-size;
-                    color: $base-gray;
-                    text-decoration: none;
-                    font-size: 3*$base-pixel-size;
+                .single-menu-element {
+                    display: flex;
+                    flex-direction: row;
+                    padding: 2*$base-pixel-size 2*$base-pixel-size 2*$base-pixel-size 1.5*$base-pixel-size;
+                    margin: 0 2*$base-pixel-size 2*$base-pixel-size;
+
+                    a {
+                        color: #3A495F;
+                        text-decoration: none;
+                        font-size: 2.5*$base-pixel-size;
+                        margin-left: 3*$base-pixel-size;
+                    }
                 }
             }
         }
