@@ -5,11 +5,20 @@ import EApiMethods from "Utils/Types/EApiMethods";
 import ICredentials from "./Types/ICredentials";
 import IUserData from "./Types/IUserData";
 import IUseUserData from "./Types/IUseUserData";
+import UserDefaultPicture from 'Assets/Images/user-default-picture.png'
 
-export const UserDataContext = createContext<IUserData>({});
+const initialUserData: ICredentials = {
+    name: '',
+    picture: UserDefaultPicture,
+    notificationNumber: 0
+}
+
+export const UserDataContext = createContext<IUserData>({
+    userData: initialUserData
+});
 
 export const UseUserData = ({ children }: IUseUserData) => {
-    const [userData, setUserData] = useState<ICredentials | undefined>(undefined)
+    const [userData, setUserData] = useState<ICredentials>(initialUserData)
     const { isLoggedIn } = useContext(TokenContext)
 
     useEffect(() => {

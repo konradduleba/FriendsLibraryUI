@@ -1,4 +1,5 @@
 import Dashboard from 'Pages/Authenticated/Dashboard';
+import UserPrivacy from 'Pages/Authenticated/Privacy';
 import About from 'Pages/Global/About';
 import Faq from 'Pages/Global/Faq';
 import Privacy from 'Pages/Global/Privacy';
@@ -7,6 +8,7 @@ import { Switch, Route } from "react-router-dom";
 
 const Authenticated = () => (
     <Switch>
+        <Route exact path='/my-privacy' component={UserPrivacy} />
         <Route exact path='/dashboard' component={Dashboard} />
         <Route exact path='/about' component={About} />
         <Route exact path='/terms' component={Terms} />

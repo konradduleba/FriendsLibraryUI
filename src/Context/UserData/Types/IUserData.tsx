@@ -1,6 +1,6 @@
 import ICredentials from "./ICredentials";
 
 export default interface IUserData {
-    userData?: ICredentials;
+    userData: ICredentials;
     setUserData?: (data: ICredentials) => void;
 }

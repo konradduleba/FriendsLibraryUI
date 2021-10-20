@@ -2,6 +2,7 @@ import React from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 import IMenuListAuthenticated from '../Types/IMenuListAuthenticated'
 import LogoutIcon from 'Assets/Icons/logout.svg'
+import checkIfMatchLocation from 'Utils/Functions/checkIfMatchLocation'
 
 const MenuList = ({ menuList, onCloseMenu, logout }: IMenuListAuthenticated): JSX.Element | null => {
     const history = useHistory()
@@ -20,8 +21,8 @@ const MenuList = ({ menuList, onCloseMenu, logout }: IMenuListAuthenticated): JS
     return (
         <div className='menu-list'>
             {menuList.map(({ title, path, icon, whiteIcon }, index) => (
-                <div className={`single-menu-element ${path === pathname ? 'selected' : ''}`} onClick={() => onElementClick(path)} key={path + index}>
-                    <img src={path === pathname ? whiteIcon : icon} alt='menu element' />
+                <div className={`single-menu-element ${checkIfMatchLocation(path, pathname) ? 'selected' : ''}`} onClick={() => onElementClick(path)} key={path + index}>
+                    <img src={checkIfMatchLocation(path, pathname) ? whiteIcon : icon} alt='menu element' />
                     <p>{title}</p>
                 </div>
             ))}

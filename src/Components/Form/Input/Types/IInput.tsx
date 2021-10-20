@@ -1,3 +1,4 @@
+import { KeyboardEvent } from "react";
 import EInputTypes from "./EInputTypes";
 
 export default interface IInput {
@@ -9,4 +10,5 @@ export default interface IInput {
   value: string;
   onChange: (value: string) => void;
   errorMessage?: string;
+  onKeyPress?: (event: KeyboardEvent) => void;
 }

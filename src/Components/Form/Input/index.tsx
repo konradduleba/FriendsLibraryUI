@@ -7,7 +7,7 @@ import EInputTypes from './Types/EInputTypes'
 import EErrorMessage from './Types/EErrorMessages'
 import './Styles/Input.scss'
 
-const FormInput = ({ type, placeholder, value, onChange, header, headerChildren, errorMessage, isRequired }: IInput) => {
+const FormInput = ({ type, placeholder, value, onChange, header, headerChildren, errorMessage, isRequired, onKeyPress }: IInput) => {
     const [errorInformation, setErrorInformation] = useState<string | null>(null)
     const [isInputFilled, setIsInputFilled] = useState<boolean>(false)
     const [inputType, setInputType] = useState<EInputTypes>(type)
@@ -56,6 +56,7 @@ const FormInput = ({ type, placeholder, value, onChange, header, headerChildren,
                     onChange={onInputChange}
                     placeholder={placeholder}
                     onBlur={onBlurChangeBorderStyle}
+                    onKeyPress={onKeyPress}
                 />
                 {type === EInputTypes.PASSWORD && <PasswordToggler type={inputType} onTypeChange={setInputType} />}
             </div>
