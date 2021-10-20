@@ -1,0 +1,32 @@
+@import 'Utils/Styles/variables.scss';
+
+.search-wrapper {
+    .search-query-container {
+        display: flex;
+        flex-direction: row;
+        margin-left: $base-pixel-size/2;
+        border-radius: 4px;
+
+        .input-content-container {
+            background-color: #FFF;
+            border-radius: 2px 0 0 2px;
+            border: 0;
+            padding-right: 0;
+            padding-left: $base-pixel-size;
+            width: 300px;
+        }
+
+        .clear-button {
+            padding: 0 2*$base-pixel-size;
+            background-color: #FFF;
+            border-radius: 0 2px 2px 0;
+            cursor: pointer;
+        }
+    }
+
+    .search-button {
+        padding: 2*$base-pixel-size - 1px 2*$base-pixel-size 2*$base-pixel-size - 2px;
+        cursor: pointer;
+        border-radius: 0 4px 4px 0;
+    }
+}

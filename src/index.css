@@ -1,13 +1,55 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: 'Montserrat';
+  src: url('Font/Montserrat-Regular.ttf');
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+  font-family: 'MontserratBold';
+  src: url('Font/Montserrat-SemiBold.ttf');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat';
+}
+
+.main-app-wrapper,
+.main-app-wrapper-authenticated {
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #F8F9FA;
+}
+
+.main-app-wrapper-authenticated {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+}
+
+@media screen and (max-width: 480px) {
+
+  .page-wrapper,
+  .page-wrapper-authenticated {
+    padding-top: 64px;
+  }
+
+  .main-app-wrapper-authenticated {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+h1 {
+  color: #3A495F;
+  font-size: 32px;
 }

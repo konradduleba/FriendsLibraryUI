@@ -1,0 +1,92 @@
+@import 'Utils/Styles/variables.scss';
+
+.nav-bar-wrapper {
+    width: 100%;
+    box-shadow: 0px 1px 18px 0px #A2B5C14D;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 3*$base-pixel-size 10*$base-pixel-size;
+    align-items: center;
+    background-color: #FFF;
+    z-index: 2;
+    position: relative;
+
+    .options {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .button-wrapper {
+            margin-right: 3*$base-pixel-size;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .nav-bar-wrapper {
+        padding: $base-pixel-size $base-pixel-size $base-pixel-size 3*$base-pixel-size;
+        position: fixed;
+
+        .options {
+
+            .menu-burger {
+                padding: 2*$base-pixel-size;
+                border-radius: 4px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 6*$base-pixel-size;
+
+                &.menu-opened {
+                    background: #3D8EBB;
+                }
+
+                img {
+                    height: 2*$base-pixel-size;
+                }
+            }
+
+            .menu-list {
+                position: fixed;
+                top: 8*$base-pixel-size - 1px;
+                left: 0;
+                width: 100%;
+                height: calc(100vh - 8*$base-pixel-size);
+                display: flex;
+                flex-direction: column;
+                z-index: 999;
+                background-color: #FFF;
+                padding-top: $base-pixel-size;
+
+                .single-menu-element {
+                    display: grid;
+                    grid-template-columns: 40px 1fr;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 2*$base-pixel-size 2*$base-pixel-size 2*$base-pixel-size 2.5*$base-pixel-size;
+                    margin: 0 2*$base-pixel-size 2*$base-pixel-size;
+
+                    &.selected {
+                        background-color: #3D8EBB;
+                        border-radius: 4px;
+
+                        p {
+                            color: #FFF;
+                        }
+                    }
+
+                    p {
+                        color: #3A495F;
+                        text-decoration: none;
+                        font-size: 2.5*$base-pixel-size;
+                    }
+                }
+            }
+        }
+    }
+}

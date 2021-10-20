@@ -1,0 +1,79 @@
+@import 'Utils/Styles/variables.scss';
+
+.register-page-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .error-message-container {
+        background-color: $error-message-color;
+    }
+
+    .error-message-container,
+    .success-message-container {
+        width: 100%;
+        padding: 3.5*$base-pixel-size;
+        color: #FFF;
+    }
+
+    .success-message-container {
+        background-color: #44998F;
+    }
+
+    .form-content {
+        margin-top: 10*$base-pixel-size;
+        width: 50%;
+        background-color: #FFF;
+    }
+
+    h1 {
+        margin-bottom: 5*$base-pixel-size;
+    }
+
+    .form-input-wrapper {
+        margin-bottom: 3*$base-pixel-size;
+    }
+
+    .input-container {
+        .form-input-wrapper {
+            margin-bottom: $base-pixel-size;
+        }
+
+        .input-validator {
+            margin-bottom: 3*$base-pixel-size;
+
+            img {
+                margin-right: $base-pixel-size;
+                height: 10px;
+            }
+
+            p {
+                display: flex;
+                align-items: center;
+                color: #44998F;
+                margin-bottom: $base-pixel-size/2;
+            }
+        }
+    }
+
+    .button-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 5*$base-pixel-size;
+        margin-bottom: 10*$base-pixel-size;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .register-page-wrapper {
+        .form-content {
+            margin-top: $base-pixel-size;
+            padding: 3*$base-pixel-size;
+            width: 100%;
+        }
+
+        .button-wrapper {
+            margin-bottom: 0;
+        }
+    }
+}

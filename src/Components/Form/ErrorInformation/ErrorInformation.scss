@@ -1,0 +1,16 @@
+@import 'Utils/Styles/variables.scss';
+
+.error-information-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: $base-pixel-size;
+
+    img {
+        margin-right: $base-pixel-size;
+    }
+
+    p {
+        color: $error-message-color;
+        font-size: 14px;
+    }
+}

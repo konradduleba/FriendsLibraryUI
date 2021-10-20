@@ -1,0 +1,55 @@
+@import 'Utils/Styles/variables.scss';
+
+.form-checkbox-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .checkbox-content-container {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        font-size: 2*$base-pixel-size;
+        align-items: center;
+        user-select: none;
+
+        .checkbox {
+            height: 4*$base-pixel-size;
+            width: 4*$base-pixel-size;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #D4E2EA;
+            cursor: pointer;
+
+            &:hover {
+                border-color: #7E94A2;
+            }
+
+            &.selected {
+                background-color: #F2F7FA;
+                border-color: #3D8EBB;
+            }
+        }
+
+        label {
+            display: flex;
+            flex-direction: row;
+            margin-left: $base-pixel-size;
+            cursor: pointer;
+
+            a {
+                color: #3D8EBB;
+            }
+        }
+
+        label:hover+.checkbox {
+            border-color: #7E94A2;
+
+            &.selected {
+                border-color: #3D8EBB;
+            }
+        }
+    }
+}
