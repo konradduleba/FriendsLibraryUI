@@ -4,8 +4,9 @@ import MenuCloseIcon from 'Assets/Icons/cancel-white.svg'
 import { useState } from 'react'
 import MenuList from './MenuList'
 import '../Styles/MobileMenu.scss'
+import ILogout from '../Types/ILogout'
 
-const MobileMenu = () => {
+const MobileMenu = ({ logout }: ILogout) => {
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
 
     const menuVisibilityToggler = () => {
@@ -28,6 +29,7 @@ const MobileMenu = () => {
                 {isMenuOpen && <MenuList
                     menuList={menuList}
                     onCloseMenu={() => setIsMenuOpen(false)}
+                    logout={logout}
                 />}
             </div>
         </div>

@@ -3,7 +3,7 @@ import { useHistory, useLocation } from 'react-router-dom'
 import IMenuListAuthenticated from '../Types/IMenuListAuthenticated'
 import LogoutIcon from 'Assets/Icons/logout.svg'
 
-const MenuList = ({ menuList, onCloseMenu }: IMenuListAuthenticated): JSX.Element | null => {
+const MenuList = ({ menuList, onCloseMenu, logout }: IMenuListAuthenticated): JSX.Element | null => {
     const history = useHistory()
     const { pathname } = useLocation()
 
@@ -17,10 +17,6 @@ const MenuList = ({ menuList, onCloseMenu }: IMenuListAuthenticated): JSX.Elemen
         return onCloseMenu()
     }
 
-    const onClickLogout = () => {
-        return history.push('/login')
-    }
-
     return (
         <div className='menu-list'>
             {menuList.map(({ title, path, icon, whiteIcon }, index) => (
@@ -29,7 +25,7 @@ const MenuList = ({ menuList, onCloseMenu }: IMenuListAuthenticated): JSX.Elemen
                     <p>{title}</p>
                 </div>
             ))}
-            <div className='single-menu-element' onClick={onClickLogout}>
+            <div className='single-menu-element' onClick={logout}>
                 <img src={LogoutIcon} alt='logout' />
                 <p>Logout</p>
             </div>

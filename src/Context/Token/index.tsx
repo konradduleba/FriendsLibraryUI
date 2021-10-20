@@ -36,7 +36,9 @@ export const UseToken = ({ children }: IUseToken): JSX.Element => {
 
         localStorage.removeItem('token');
 
-        return setLoginStatus(false)
+        setLoginStatus(false)
+
+        return true
     }
 
     const loginUser = async (credentials: ILogin) => {

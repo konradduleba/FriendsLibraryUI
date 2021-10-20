@@ -1,16 +1,12 @@
-import { useHistory, useLocation } from 'react-router'
+import { useLocation } from 'react-router'
 import { NavLink } from 'react-router-dom'
 import { menuList } from '../Utils/menuList'
 import LogoutIcon from 'Assets/Icons/logout-white.svg'
+import ILogout from '../Types/ILogout'
 import '../Styles/DesktopMenu.scss'
 
-const DesktopMenu = () => {
-    const history = useHistory()
+const DesktopMenu = ({ logout }: ILogout) => {
     const { pathname } = useLocation()
-
-    const onClickLogout = () => {
-        return history.push('/login')
-    }
 
     return (
         <div className='menu-wrapper'>
@@ -22,7 +18,7 @@ const DesktopMenu = () => {
                     <img src={path === pathname ? whiteIcon : icon} alt='menu' />
                 </NavLink>
             ))}
-            <div className='single-menu-item' onClick={onClickLogout}>
+            <div className='single-menu-item' onClick={logout}>
                 <img src={LogoutIcon} alt='logout' />
             </div>
         </div>
