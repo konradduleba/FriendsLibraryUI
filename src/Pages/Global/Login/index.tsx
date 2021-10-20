@@ -4,7 +4,7 @@ import FormInput from "Components/Form/Input";
 import EInputTypes from "Components/Form/Input/Types/EInputTypes";
 import { useContext, useRef, useState } from "react";
 import ILoginCredentials from "./Types/ILoginCredentials";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import useWindowSize from "Utils/Functions/useWindowSize";
 import checkIsMobileView from "Utils/Functions/checkIsMobileView";
 import { TokenContext } from "Context/Token";
@@ -33,6 +33,7 @@ const Login = (): JSX.Element => {
         isSuccess: false,
         message: ''
     })
+    const history = useHistory()
 
     const onLoginUser = async () => {
         const data = { ...loginCredentials }
@@ -43,12 +44,16 @@ const Login = (): JSX.Element => {
             return null
         }
 
-        const { error } = result
+        const { message, isSuccess } = result
 
-        return setMessageToTheUser({
-            isSuccess: false,
-            message: error
-        })
+        if (!isSuccess) {
+            return setMessageToTheUser({
+                isSuccess,
+                message
+            })
+        }
+
+        return history.push('/home')
     }
 
     const onLoginIn = async () => {

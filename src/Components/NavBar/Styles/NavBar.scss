@@ -64,16 +64,26 @@
                 padding-top: $base-pixel-size;
 
                 .single-menu-element {
-                    display: flex;
-                    flex-direction: row;
-                    padding: 2*$base-pixel-size 2*$base-pixel-size 2*$base-pixel-size 1.5*$base-pixel-size;
+                    display: grid;
+                    grid-template-columns: 40px 1fr;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 2*$base-pixel-size 2*$base-pixel-size 2*$base-pixel-size 2.5*$base-pixel-size;
                     margin: 0 2*$base-pixel-size 2*$base-pixel-size;
+
+                    &.selected {
+                        background-color: #3D8EBB;
+                        border-radius: 4px;
+
+                        p {
+                            color: #FFF;
+                        }
+                    }
 
                     p {
                         color: #3A495F;
                         text-decoration: none;
                         font-size: 2.5*$base-pixel-size;
-                        margin-left: 3*$base-pixel-size;
                     }
                 }
             }

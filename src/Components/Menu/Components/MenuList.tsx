@@ -23,9 +23,9 @@ const MenuList = ({ menuList, onCloseMenu }: IMenuListAuthenticated): JSX.Elemen
 
     return (
         <div className='menu-list'>
-            {menuList.map(({ title, path, icon }, index) => (
+            {menuList.map(({ title, path, icon, whiteIcon }, index) => (
                 <div className={`single-menu-element ${path === pathname ? 'selected' : ''}`} onClick={() => onElementClick(path)} key={path + index}>
-                    <img src={icon} alt='menu element' />
+                    <img src={path === pathname ? whiteIcon : icon} alt='menu element' />
                     <p>{title}</p>
                 </div>
             ))}

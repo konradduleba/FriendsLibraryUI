@@ -1,9 +1,10 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 import INavBarMenu from '../Types/INavBarMenu'
 
 const Menu = ({ menuList, onCloseMenu }: INavBarMenu): JSX.Element | null => {
     const history = useHistory()
+    const { pathname } = useLocation()
 
     if (!menuList || !menuList.length) {
         return null
@@ -17,9 +18,9 @@ const Menu = ({ menuList, onCloseMenu }: INavBarMenu): JSX.Element | null => {
 
     return (
         <div className='menu-list'>
-            {menuList.map(({ label, path, icon }, index) => (
-                <div className='single-menu-element' onClick={() => onElementClick(path)} key={path + index}>
-                    <img src={icon} alt='menu element' />
+            {menuList.map(({ label, path, icon, whiteIcon }, index) => (
+                <div className={`single-menu-element ${pathname === path ? 'selected' : ''}`} onClick={() => onElementClick(path)} key={path + index}>
+                    <img src={pathname === path ? whiteIcon : icon} alt='menu element' />
                     <p>{label}</p>
                 </div>
             ))}

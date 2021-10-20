@@ -49,14 +49,13 @@
 
             .single-menu-element {
                 display: grid;
-                grid-template-columns: 50px 1fr;
+                grid-template-columns: 40px 1fr;
                 justify-content: center;
                 align-items: center;
-                padding: 2*$base-pixel-size 2*$base-pixel-size 2*$base-pixel-size 1.5*$base-pixel-size;
+                padding: 2*$base-pixel-size 2*$base-pixel-size 2*$base-pixel-size 2.5*$base-pixel-size;
                 margin: 0 2*$base-pixel-size 2*$base-pixel-size;
 
                 &.selected {
-                    // box-shadow: 5px 8px 28px rgba(54, 121, 157, 0.14);
                     background-color: #3D8EBB;
                     border-radius: 4px;
 

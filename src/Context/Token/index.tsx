@@ -1,7 +1,6 @@
 import axiosInstance from 'Authentication/axios';
 import sendRequest from 'Authentication/sendRequest';
 import React, { createContext, useState } from 'react'
-import { useHistory } from 'react-router';
 import EApiMethods from 'Utils/Types/EApiMethods';
 import ILogin from './Types/ILogin';
 import IToken from './Types/IToken'
@@ -27,7 +26,6 @@ const checkLoginStatus = (): boolean => {
 
 export const UseToken = ({ children }: IUseToken): JSX.Element => {
     const [isLoggedIn, setLoginStatus] = useState<boolean>(checkLoginStatus());
-    const history = useHistory()
 
     const logoutUser = async () => {
         const { ok } = await sendRequest(EApiMethods.GET, '/user/logout');
@@ -46,13 +44,22 @@ export const UseToken = ({ children }: IUseToken): JSX.Element => {
 
         const token = await sendRequest(EApiMethods.POST, '/user/login', data);
 
-        setTokenToTheAxiosConfig(token)
+        if (typeof token !== 'string') {
+            return {
+                isSuccess: false,
+                message: token.error
+            }
+        }
+
+        axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
         localStorage.setItem('token', token);
 
         setLoginStatus(true);
 
-        return history && history.push('/dashboard')
+        return {
+            isSuccess: true
+        }
     }
 
     return (
