@@ -102,8 +102,10 @@
                 -webkit-tap-highlight-color: transparent;
                 outline: none;
 
-                &:focus {
-                    outline: none;
+                &:focus,
+                &:active,
+                &:hover {
+                    outline: none !important;
                 }
             }
 
@@ -114,6 +116,12 @@
                 left: 0;
                 height: fit-content;
                 border-radius: 0;
+
+                &:focus,
+                &:active,
+                &:hover {
+                    outline: none !important;
+                }
             }
 
             .mobile-options-header {
