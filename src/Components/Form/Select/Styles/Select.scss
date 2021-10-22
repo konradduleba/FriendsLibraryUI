@@ -75,6 +75,8 @@
             top: 5*$base-pixel-size;
             position: absolute;
             width: 100%;
+            max-height: 300px;
+            overflow-y: auto;
             z-index: 9;
 
             .single-option {
@@ -116,12 +118,18 @@
                 left: 0;
                 height: fit-content;
                 border-radius: 0;
+                overflow-y: none;
 
                 &:focus,
                 &:active,
                 &:hover {
                     outline: none !important;
                 }
+            }
+
+            .mobile-options-container {
+                max-height: 200px;
+                overflow-y: auto;
             }
 
             .mobile-options-header {

@@ -39,10 +39,6 @@ const FormSelect = ({ value, onChange, options, isRequired, errorMessage, header
         isRequired && errorMessage && setErrorInformation(errorMessage)
     }, [errorMessage, isRequired])
 
-    if (isMobileView === undefined) {
-        return null
-    }
-
     return (
         <div className='form-select-wrapper'>
             <Header title={header}>{headerChildren}</Header>
@@ -59,7 +55,7 @@ const FormSelect = ({ value, onChange, options, isRequired, errorMessage, header
                         selectedValue={value}
                         onSelectOption={onSelectOption}
                         header={header}
-                        isMobileView={isMobileView}
+                        isMobileView={!!isMobileView}
                         toggleOpening={toggleOpening}
                     />
                 }
