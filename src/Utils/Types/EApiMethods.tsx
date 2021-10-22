@@ -1,7 +1,8 @@
 enum EApiMethods {
     GET = "get",
     POST = "post",
-    PUT = "put"
+    PUT = "put",
+    PATCH = "patch"
 }
 
 export default EApiMethods

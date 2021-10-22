@@ -1,8 +1,10 @@
+import ISingleOption from "./ISingleOption";
+
 export default interface IOptions {
-    options: [{
-        label: string;
-        value: string | number;
-    }];
+    options: ISingleOption[];
     selectedValue?: string | number | null;
     onSelectOption: (value: string | number) => void;
+    header?: string;
+    isMobileView: boolean | number;
+    toggleOpening: () => void;
 }

@@ -1,0 +1,33 @@
+@import 'Utils/Styles/variables.scss';
+
+.tab-content-wrapper {
+    .tab-header {
+        h1 {
+            font-family: 'MontserratBold';
+            font-size: 3*$base-pixel-size;
+            color: #3A495F
+        }
+
+        p {
+            margin: $base-pixel-size 0 3*$base-pixel-size;
+            color: #7E94A1;
+        }
+    }
+
+    .single-setting-container {
+        margin-bottom: 3*$base-pixel-size;
+        width: 50%;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .tab-content-wrapper {
+        .single-setting-container {
+            width: 100%;
+        }
+    }
+}

@@ -75,6 +75,7 @@
             top: 5*$base-pixel-size;
             position: absolute;
             width: 100%;
+            z-index: 9;
 
             .single-option {
                 display: flex;
@@ -86,6 +87,48 @@
 
                 &:hover {
                     background-color: #F2F7FA;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .form-select-wrapper {
+        .select-container {
+            position: static;
+
+            .value-container {
+                -webkit-tap-highlight-color: transparent;
+            }
+
+            .options-container {
+                margin-top: auto;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                height: fit-content;
+                border-radius: 0;
+            }
+
+            .mobile-options-header {
+                display: grid;
+                grid-template-columns: 1fr 40px;
+                gap: 3*$base-pixel-size;
+                padding: 0 $base-pixel-size/2;
+                border-bottom: 1.5px solid #D4E2EA;
+                align-items: center;
+
+                p {
+                    padding: $base-pixel-size $base-pixel-size 1.5*$base-pixel-size 1.5*$base-pixel-size;
+                    font-family: "MontserratBold";
+                }
+
+                div {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 40px;
                 }
             }
         }
