@@ -15,6 +15,10 @@
 
         img {
             height: 100px;
+
+            &.spin {
+                animation: spin 4s infinite linear
+            }
         }
 
         .loader {
@@ -44,6 +48,16 @@
                 animation: loading-bar 2s infinite alternate ease
             }
         }
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
     }
 }
 

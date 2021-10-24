@@ -1,9 +1,11 @@
 import IInputValidatorMessages from "../Types/IInputValidatorMessages"
 import emailValidator from "./emailValidator"
+import newPasswordValidator from "./newPasswordValidator"
 import passwordValidator from "./passwordValidator"
+import repeatPasswordValidator from "./repeatPasswordValidator"
 import textFieldValidator from "./textFieldValidator"
 
-const checkValidation = (key: string, value: string) => {
+const checkValidation = (key: string, value: string, value1?: string, value2?: string) => {
     let requirementsArray: IInputValidatorMessages[] = []
 
     if (key === 'password') {
@@ -11,6 +13,12 @@ const checkValidation = (key: string, value: string) => {
     }
     else if (key === 'email') {
         requirementsArray = emailValidator(value)
+    }
+    else if (key === 'repeat-password') {
+        requirementsArray = repeatPasswordValidator(value, value1 ? value1 : '')
+    }
+    else if (key === 'new-password') {
+        requirementsArray = newPasswordValidator(value, value1 ? value1 : '', value2 ? value2 : '')
     }
     else {
         requirementsArray = textFieldValidator(key, value)

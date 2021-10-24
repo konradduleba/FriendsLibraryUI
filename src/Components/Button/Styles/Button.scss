@@ -97,7 +97,7 @@
             padding: $base-pixel-size - 2px 3*$base-pixel-size;
             border-color: $base-blue;
             color: $base-blue;
-            font-family: 'Poppins';
+            font-family: 'Montserrat';
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -119,6 +119,12 @@
             }
         }
 
+        &.image-primary {
+            background-color: $base-blue;
+            border-color: $base-blue;
+            color: #fff;
+        }
+
         &.image-secondary {
             border-color: #3A495F;
             color: #3A495F;
@@ -138,7 +144,7 @@
 @media screen and (max-width: 480px) {
     .button-wrapper {
         button {
-            padding: 1.5*$base-pixel-size 5*$base-pixel-size;
+            padding: 1.5*$base-pixel-size 5*$base-pixel-size !important;
             width: 100%;
         }
     }

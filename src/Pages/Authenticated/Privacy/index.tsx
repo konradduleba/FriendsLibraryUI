@@ -12,7 +12,7 @@ import Profile from './Components/Profile'
 import './Styles/Privacy.scss'
 import Contact from './Components/Contact'
 import IMessageToTheUser from 'Pages/Global/Register/Types/IMessageToTheUser'
-import checkIfPrivacySettingsHaveChanged from './Funtions/checkIfPrivacySettingsHaveChanged'
+import checkIfPrivacySettingsHaveChanged from './Functions/checkIfPrivacySettingsHaveChanged'
 
 const UserPrivacy = () => {
     const [privacySettings, setPrivacySettings] = useState<IPrivacy | null>(null)

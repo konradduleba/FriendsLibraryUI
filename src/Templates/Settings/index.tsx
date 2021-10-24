@@ -12,7 +12,7 @@ import moveToTopSmoothly from 'Utils/Functions/moveToTopSmoothly'
 import './Styles/SettingsTemplate.scss'
 import './Styles/SettingsTemplateMobile.scss'
 
-const SettingsTemplate = ({ options, title, onSubmitClick, messageToTheUser }: ISettingsTemplate) => {
+const SettingsTemplate = ({ options, title, onSubmitClick, messageToTheUser, viewsWithoutSubmitButton, page }: ISettingsTemplate) => {
     const [activeTab, setActiveTab] = useState<string>(options && options.length ? options[0].name : '')
     const { isSuccess, message } = messageToTheUser
     const { width } = useWindowSize()
@@ -25,6 +25,8 @@ const SettingsTemplate = ({ options, title, onSubmitClick, messageToTheUser }: I
 
         return setActiveTab(tab)
     }
+
+    const isSubmitDisabled = !!(viewsWithoutSubmitButton?.find(cartName => cartName === activeTab))
 
     const onSubmitClickMobile = () => {
         moveToTopSmoothly()
@@ -47,6 +49,7 @@ const SettingsTemplate = ({ options, title, onSubmitClick, messageToTheUser }: I
                             onClick={onSubmitClick}
                             type={EButtonTypeList.PRIMARY}
                             value='Submit'
+                            disabled={isSubmitDisabled}
                         />
                     </div>
                 </div>
@@ -68,12 +71,15 @@ const SettingsTemplate = ({ options, title, onSubmitClick, messageToTheUser }: I
     return (
         <div className='setting-template-wrapper-mobile'>
             <MessageToTheUser isSuccess={isSuccess} message={message} />
-            <ContentMobile options={options} />
-            <Button
+            <ContentMobile
+                options={options}
+                onSubmitClickMobile={onSubmitClickMobile}
+            />
+            {page !== 'settings' && <Button
                 onClick={onSubmitClickMobile}
                 type={EButtonTypeList.PRIMARY}
                 value='Submit'
-            />
+            />}
         </div>
     )
 }

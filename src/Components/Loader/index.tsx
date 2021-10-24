@@ -4,13 +4,14 @@ import './Loader.scss'
 interface ILoader {
     icon: string;
     colorBar?: string;
-    ready?: Boolean;
+    ready?: boolean;
+    spin?: boolean;
 }
 
-const Loader = ({ icon, colorBar, ready }: ILoader) => (
+const Loader = ({ icon, colorBar, ready, spin }: ILoader) => (
     <div className='loader-wrapper'>
         <div className='content'>
-            <img src={icon} alt="loader" />
+            <img src={icon} alt="loader" className={spin ? 'spin' : ''} />
             <div className={`loader ${ready ? 'ready' : ''}`}>
                 <div className='loading-bar' style={{ backgroundColor: colorBar }}></div>
             </div>

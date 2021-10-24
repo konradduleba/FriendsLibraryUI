@@ -1,5 +1,6 @@
 import ITab from "./ITab";
 
 export default interface IContentMobile {
-    options: ITab[]
+    options: ITab[];
+    onSubmitClickMobile: () => void;
 }
