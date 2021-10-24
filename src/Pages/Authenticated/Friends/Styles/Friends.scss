@@ -1,0 +1,63 @@
+@import 'Utils/Styles/variables.scss';
+
+.friens-page-wrapper {
+    padding: 0 10*$base-pixel-size;
+
+    .friend-list-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 5*$base-pixel-size;
+        row-gap: 5*$base-pixel-size;
+        margin-top: 3*$base-pixel-size;
+        padding-bottom: 3*$base-pixel-size;
+
+        .single-friend {
+            width: 100%;
+            background-color: #FFF;
+            box-shadow: 0px 6px 16px rgba(54, 121, 157, 0.14);
+            border-radius: 4px;
+            cursor: pointer;
+
+            .picture-container {
+                padding: 3*$base-pixel-size;
+
+                img {
+                    width: 100%;
+                    border-radius: 4px;
+                    max-height: 200px;
+                }
+            }
+
+            p {
+                background-color: #3D8EBB;
+                padding: 2*$base-pixel-size 3*$base-pixel-size;
+                text-align: center;
+                color: #FFF;
+                border-radius: 0 0 4px 4px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .friens-page-wrapper {
+        padding: 5*$base-pixel-size 3*$base-pixel-size 0;
+
+        .friend-list-container {
+            grid-template-columns: 1fr 1fr;
+            gap: 3*$base-pixel-size;
+
+            .single-friend {
+                .picture-container {
+                    img {
+                        max-height: 75px;
+                    }
+                }
+
+                p {
+                    padding: $base-pixel-size 2*$base-pixel-size;
+                }
+            }
+        }
+    }
+}
