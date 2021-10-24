@@ -167,6 +167,10 @@
 
             .button-wrapper {
                 margin: 0;
+
+                button {
+                    justify-content: center;
+                }
             }
 
             .delete-or-deactive-wrapper {
