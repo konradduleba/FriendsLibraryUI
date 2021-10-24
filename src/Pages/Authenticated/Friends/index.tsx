@@ -5,11 +5,15 @@ import EApiMethods from 'Utils/Types/EApiMethods'
 import IFriends from './Types/IFriends'
 import FriendsIcon from 'Assets/Icons/two-users.svg'
 import { useHistory } from 'react-router'
+import FriendsSearch from './Components/Search'
+import filterFriendList from './Functions/filterFriendList'
 import './Styles/Friends.scss'
 
 const Friends = () => {
     const [friendsList, setFriendsList] = useState<IFriends[] | null>(null)
+    const [originalFriendList, setOriginalFriendList] = useState<IFriends[] | null>(null)
     const [displayReadyLoader, setDisplayReadyLoader] = useState<boolean>(false)
+    const [searchQuery, setSearchQuery] = useState<string>('')
     const history = useHistory()
 
     useEffect(() => {
@@ -17,6 +21,8 @@ const Friends = () => {
             const result = await sendRequest(EApiMethods.GET, '/user/friend-list')
 
             setFriendsList(result)
+
+            setOriginalFriendList(result)
 
             setDisplayReadyLoader(true)
 
@@ -27,6 +33,14 @@ const Friends = () => {
 
         getFriendsList()
     }, [])
+
+    const onUpdateSearchQuery = (value: string) => {
+        const filteredFriendList = filterFriendList(originalFriendList, value.toLowerCase())
+
+        setFriendsList(filteredFriendList)
+
+        return setSearchQuery(value)
+    }
 
     if (!friendsList) {
         return <Loader icon={FriendsIcon} />
@@ -42,7 +56,10 @@ const Friends = () => {
 
     return (
         <div className='friens-page-wrapper'>
-            <h1>Friend List</h1>
+            <div className='header'>
+                <h1>Friend List</h1>
+                <FriendsSearch searchQuery={searchQuery} setSearchQuery={onUpdateSearchQuery} />
+            </div>
             <div className='friend-list-container'>
                 {friendsList.map(({ id, name, lastname, picture, username }) => (
                     <div className='single-friend' key={id} onClick={() => onClickFriend(username)}>
