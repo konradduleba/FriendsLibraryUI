@@ -7,6 +7,7 @@ import { useHistory } from 'react-router'
 import GroupsSearch from './Components/Search'
 import filterGroupList from './Functions/filterGroupList'
 import IGroups from './Types/IFriends'
+import DisplayGroups from './Components/DisplayGroups'
 import './Styles/Groups.scss'
 
 const Groups = () => {
@@ -60,16 +61,10 @@ const Groups = () => {
                 <h1>Your Groups</h1>
                 <GroupsSearch searchQuery={searchQuery} setSearchQuery={onUpdateSearchQuery} />
             </div>
-            <div className='group-list-container'>
-                {groupList.map(({ id, name, picture }) => (
-                    <div className='single-group' key={id} onClick={() => onClickGroup(id)}>
-                        <div className='picture-container'>
-                            <img src={picture} alt={name} />
-                        </div>
-                        <p>{name}</p>
-                    </div>
-                ))}
-            </div>
+            <DisplayGroups
+                groups={groupList}
+                onClickGroup={onClickGroup}
+            />
         </div>
     )
 }

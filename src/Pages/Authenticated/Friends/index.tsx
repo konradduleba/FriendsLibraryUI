@@ -8,6 +8,7 @@ import { useHistory } from 'react-router'
 import FriendsSearch from './Components/Search'
 import filterFriendList from './Functions/filterFriendList'
 import './Styles/Friends.scss'
+import DisplayFriends from './Components/DisplayFriends'
 
 const Friends = () => {
     const [friendsList, setFriendsList] = useState<IFriends[] | null>(null)
@@ -60,16 +61,10 @@ const Friends = () => {
                 <h1>Friend List</h1>
                 <FriendsSearch searchQuery={searchQuery} setSearchQuery={onUpdateSearchQuery} />
             </div>
-            <div className='friend-list-container'>
-                {friendsList.map(({ id, name, lastname, picture, username }) => (
-                    <div className='single-friend' key={id} onClick={() => onClickFriend(username)}>
-                        <div className='picture-container'>
-                            <img src={picture} alt={`${name} ${lastname}`} />
-                        </div>
-                        <p>{name} {lastname}</p>
-                    </div>
-                ))}
-            </div>
+            <DisplayFriends
+                friends={friendsList}
+                onClickFriend={onClickFriend}
+            />
         </div>
     )
 }
