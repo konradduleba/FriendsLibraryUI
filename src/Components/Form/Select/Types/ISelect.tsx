@@ -1,3 +1,5 @@
+import ISingleOption from "./ISingleOption";
+
 export default interface ISelect {
     isRequired?: boolean;
     placeholder?: string;
@@ -5,9 +7,6 @@ export default interface ISelect {
     headerChildren?: JSX.Element;
     value?: string | number | null;
     onChange: (value: string | number) => void;
-    options: [{
-        label: string;
-        value: string | number;
-    }];
+    options: ISingleOption[];
     errorMessage?: string;
 }

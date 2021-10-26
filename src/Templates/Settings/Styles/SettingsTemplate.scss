@@ -1,0 +1,78 @@
+@import 'Utils/Styles/variables.scss';
+
+.setting-template-wrapper {
+    padding: 0 10*$base-pixel-size 0;
+    margin-bottom: 10*$base-pixel-size;
+
+    .header-and-submit-button {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .submit-and-message-to-the-user {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            .error-message-container,
+            .success-message-container {
+                background-color: $error-message-color;
+                height: 38px;
+                padding: 0 3*$base-pixel-size;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 4px;
+                margin-right: 3*$base-pixel-size;
+
+                p {
+                    color: #FFF;
+                }
+            }
+
+            .success-message-container {
+                background-color: #44998F;
+            }
+        }
+    }
+
+    .content-wrapper {
+        display: grid;
+        grid-template-columns: 20% 1fr;
+        margin-top: 5*$base-pixel-size;
+
+        .options-panel-container {
+            z-index: 2;
+            user-select: none;
+
+            .single-option {
+                padding: 2*$base-pixel-size 4*$base-pixel-size 2*$base-pixel-size 3*$base-pixel-size;
+                cursor: pointer;
+
+                p {
+                    font-size: 20px;
+                    color: #3A495F;
+                }
+
+                &.active {
+                    background-color: #3D8EBB;
+
+                    p {
+                        color: #FFF;
+
+                    }
+
+                    border-radius: 5px 0px 0px 5px;
+                }
+            }
+        }
+
+        .tab-container {
+            background-color: #FFF;
+            padding: 10*$base-pixel-size;
+            box-shadow: 0px 8px 28px rgba(54, 121, 157, 0.14);
+            border-radius: 0 4px 4px 0;
+            z-index: 1;
+        }
+    }
+}

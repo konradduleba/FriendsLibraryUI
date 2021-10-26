@@ -1,6 +1,7 @@
 enum EInputTypes {
     TEXT = 'text',
-    PASSWORD = 'password'
+    PASSWORD = 'password',
+    DATE = 'date'
 }
 
 export default EInputTypes

@@ -1,0 +1,198 @@
+@import 'Utils/Styles/variables.scss';
+
+.settings-page-wrapper {
+    .tab-content-wrapper {
+        .tab-header {
+            h1 {
+                font-family: 'MontserratBold';
+                font-size: 3*$base-pixel-size;
+                color: #3A495F
+            }
+
+            p {
+                margin: $base-pixel-size 0 3*$base-pixel-size;
+                color: #7E94A1;
+            }
+        }
+
+        .single-setting-container {
+            margin-bottom: 3*$base-pixel-size;
+            width: 50%;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        .input-container {
+            width: 50%;
+
+            .form-input-wrapper {
+                margin-bottom: $base-pixel-size;
+            }
+
+            .input-validator {
+                margin-bottom: 3*$base-pixel-size;
+
+                img {
+                    margin-right: $base-pixel-size;
+                    height: 10px;
+                }
+
+                p {
+                    display: flex;
+                    align-items: center;
+                    color: #44998F;
+                    margin-bottom: $base-pixel-size/2;
+                }
+            }
+        }
+
+        .delete-or-deactive-wrapper {
+            margin-bottom: 3*$base-pixel-size;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            h1 {
+                font-family: "MontserratBold";
+                font-size: 2.5*$base-pixel-size;
+                color: #3A495F;
+            }
+
+            p {
+                margin: 8px 0 0;
+                color: #7E94A1;
+            }
+
+            .button-wrapper {
+                margin-top: 2*$base-pixel-size;
+            }
+
+            .deactivation-options {
+                margin-bottom: 3*$base-pixel-size;
+
+                p {
+                    font-family: "MontserratBold";
+                    color: #3A495F;
+                    margin-bottom: 2*$base-pixel-size;
+                }
+            }
+
+            &:nth-child(2) {
+                .button-wrapper {
+
+                    .image-primary,
+                    .primary {
+                        background-color: #44998F;
+                        border-color: #44998F;
+
+                        &:disabled {
+                            background-color: #F2F7FA;
+                            border-color: #F2F7FA;
+                        }
+                    }
+                }
+            }
+
+            &:nth-child(3) {
+                .button-wrapper {
+
+                    .image-primary,
+                    .primary {
+                        background-color: $error-message-color;
+                        border-color: $error-message-color;
+
+                        &:disabled {
+                            background-color: #F2F7FA;
+                            border-color: #F2F7FA;
+                        }
+                    }
+                }
+            }
+
+            &:nth-child(4) {
+                .button-wrapper {
+
+                    .image-primary,
+                    .primary {
+                        background-color: #E9C538;
+                        border-color: #E9C538;
+
+                        &:disabled {
+                            background-color: #F2F7FA;
+                            border-color: #F2F7FA;
+                        }
+                    }
+                }
+            }
+
+            .delete-container {
+                .description {
+                    margin-bottom: 3*$base-pixel-size;
+                }
+
+                .options {
+                    display: flex;
+                    flex-direction: row;
+
+                    .button-wrapper {
+                        &:first-child {
+                            margin-right: 3*$base-pixel-size;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .settings-page-wrapper {
+        .button-wrapper {
+            margin: 3*$base-pixel-size 0 !important;
+        }
+
+        .tab-content-wrapper {
+            margin-bottom: 3*$base-pixel-size !important;
+
+            .input-container {
+                width: 100%;
+
+                .input-content-container {
+                    background-color: #FFF;
+                }
+            }
+
+            .button-wrapper {
+                margin: 0;
+
+                button {
+                    justify-content: center;
+                }
+            }
+
+            .delete-or-deactive-wrapper {
+                .delete-container {
+                    .options {
+                        flex-direction: column;
+
+                        .button-wrapper {
+                            margin: 0;
+
+                            &:first-child {
+                                margin: 0 !important;
+                                margin-bottom: 3*$base-pixel-size;
+                            }
+
+                            &:last-child {
+                                margin-bottom: 0 !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

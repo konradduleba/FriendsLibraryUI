@@ -1,0 +1,28 @@
+@import 'Utils/Styles/variables.scss';
+
+.about-me-wrapper {
+    border-bottom: 1.5px solid #D4E2EA;
+
+    p {
+        word-break: normal;
+        padding: 2*$base-pixel-size 0;
+        text-align: center;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .about-me-wrapper {
+        background-color: #FFF;
+        text-align: center;
+        padding: 3*$base-pixel-size;
+
+        h1 {
+            font-size: 20px;
+        }
+
+        p {
+            overflow: hidden;
+        }
+    }
+}

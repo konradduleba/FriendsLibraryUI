@@ -5,10 +5,14 @@ import Options from './Components/Options'
 import ValueContainer from './Components/ValueContainer'
 import ISelect from './Types/ISelect'
 import './Styles/Select.scss'
+import useWindowSize from 'Utils/Functions/useWindowSize'
+import checkIsMobileView from 'Utils/Functions/checkIsMobileView'
 
 const FormSelect = ({ value, onChange, options, isRequired, errorMessage, header, headerChildren, placeholder }: ISelect) => {
     const [errorInformation, setErrorInformation] = useState<string | null>(null)
     const [isActive, setIsActive] = useState<boolean>(false)
+    const { width } = useWindowSize()
+    const isMobileView = checkIsMobileView(width)
 
     const labelForValue = options.find(singleOption => singleOption.value === value)
     const valueLabel = labelForValue ? labelForValue.label : placeholder
@@ -50,6 +54,9 @@ const FormSelect = ({ value, onChange, options, isRequired, errorMessage, header
                         options={options}
                         selectedValue={value}
                         onSelectOption={onSelectOption}
+                        header={header}
+                        isMobileView={!!isMobileView}
+                        toggleOpening={toggleOpening}
                     />
                 }
             </div>

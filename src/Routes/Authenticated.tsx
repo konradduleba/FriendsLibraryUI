@@ -1,5 +1,9 @@
 import Dashboard from 'Pages/Authenticated/Dashboard';
+import Friends from 'Pages/Authenticated/Friends';
+import Groups from 'Pages/Authenticated/Groups';
 import UserPrivacy from 'Pages/Authenticated/Privacy';
+import Profile from 'Pages/Authenticated/Profile';
+import UserSettings from 'Pages/Authenticated/Settings';
 import About from 'Pages/Global/About';
 import Faq from 'Pages/Global/Faq';
 import Privacy from 'Pages/Global/Privacy';
@@ -8,7 +12,11 @@ import { Switch, Route } from "react-router-dom";
 
 const Authenticated = () => (
     <Switch>
+        <Route exact path='/my-profile' component={Profile} />
+        <Route exact path='/friends' component={Friends} />
+        <Route exact path='/groups' component={Groups} />
         <Route exact path='/my-privacy' component={UserPrivacy} />
+        <Route exact path='/settings' component={UserSettings} />
         <Route exact path='/dashboard' component={Dashboard} />
         <Route exact path='/about' component={About} />
         <Route exact path='/terms' component={Terms} />

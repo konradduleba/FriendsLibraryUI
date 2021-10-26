@@ -1,0 +1,43 @@
+@import 'Utils/Styles/variables.scss';
+
+.my-profile-wrapper-mobile {
+    .header {
+        padding: 5*$base-pixel-size 3*$base-pixel-size;
+
+        .options {
+            margin-top: 3*$base-pixel-size;
+        }
+
+        .button-wrapper {
+            margin: 0;
+        }
+    }
+
+    .profile-content {
+        padding: 0 3*$base-pixel-size 3*$base-pixel-size;
+    }
+
+    .button-wrapper {
+        margin: 0 3*$base-pixel-size 3*$base-pixel-size;
+
+        .secondary {
+            background-color: $error-message-color;
+            border-color: $error-message-color;
+        }
+    }
+
+    .error-message-container {
+        background-color: $error-message-color;
+    }
+
+    .error-message-container,
+    .success-message-container {
+        width: 100%;
+        padding: 3.5*$base-pixel-size;
+        color: #FFF;
+    }
+
+    .success-message-container {
+        background-color: #44998F;
+    }
+}

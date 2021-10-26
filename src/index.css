@@ -29,6 +29,14 @@
   grid-template-columns: 80px 1fr;
 }
 
+.page-wrapper-authenticated {
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #F8F9FA;
+}
+
 @media screen and (max-width: 480px) {
 
   .page-wrapper,
