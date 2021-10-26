@@ -43,23 +43,7 @@
 
             .input-container {
                 .form-input-wrapper {
-                    margin-bottom: $base-pixel-size;
-                }
-
-                .input-validator {
                     margin-bottom: 3*$base-pixel-size;
-
-                    img {
-                        margin-right: $base-pixel-size;
-                        height: 10px;
-                    }
-
-                    p {
-                        display: flex;
-                        align-items: center;
-                        color: #44998F;
-                        margin-bottom: $base-pixel-size/2;
-                    }
                 }
             }
         }

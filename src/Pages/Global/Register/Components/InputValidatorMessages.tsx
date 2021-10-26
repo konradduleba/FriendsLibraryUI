@@ -15,7 +15,7 @@ const InputValidatorMessages = ({ inputValidator }: IInputValidatorMessagesCompo
     return (
         <div className='input-validator'>
             {inputValidator.map(({ status, label }, index) => (
-                <p key={index}><img src={status ? TicIcon : ErrorIcon} alt='status' />{label}</p>
+                <p key={index} className={status ? "success" : 'error'}><img src={status ? TicIcon : ErrorIcon} alt='status' />{label}</p>
             ))}
         </div>
     )

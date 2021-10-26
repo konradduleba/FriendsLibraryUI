@@ -1,20 +1,19 @@
-import Button from "Components/Button";
-import EButtonTypeList from "Components/Button/Types/EButtonTypeList";
-import FormInput from "Components/Form/Input";
-import EInputTypes from "Components/Form/Input/Types/EInputTypes";
-import { useContext, useRef, useState } from "react";
-import ILoginCredentials from "./Types/ILoginCredentials";
-import { Link, useHistory } from "react-router-dom";
-import useWindowSize from "Utils/Functions/useWindowSize";
-import checkIsMobileView from "Utils/Functions/checkIsMobileView";
-import { TokenContext } from "Context/Token";
-import IValidators from "./Types/IValidators";
-import checkValidation from "../Register/Functions/checkValidation";
-import InputValidatorMessages from "../Register/Components/InputValidatorMessages";
-import MessageToTheUser from "./Components/MessageToTheUser";
-import IMessageToTheUser from "../Register/Types/IMessageToTheUser";
-import checkIfCanLogIn from "./Functions/checkIfCanLogIn";
-import "./Styles/Login.scss";
+import Button from "Components/Button"
+import EButtonTypeList from "Components/Button/Types/EButtonTypeList"
+import FormInput from "Components/Form/Input"
+import EInputTypes from "Components/Form/Input/Types/EInputTypes"
+import { useContext, useRef, useState } from "react"
+import ILoginCredentials from "./Types/ILoginCredentials"
+import { Link, useHistory } from "react-router-dom"
+import useWindowSize from "Utils/Functions/useWindowSize"
+import checkIsMobileView from "Utils/Functions/checkIsMobileView"
+import { TokenContext } from "Context/Token"
+import IValidators from "./Types/IValidators"
+import checkValidation from "../Register/Functions/checkValidation"
+import MessageToTheUser from "./Components/MessageToTheUser"
+import IMessageToTheUser from "../Register/Types/IMessageToTheUser"
+import checkIfCanLogIn from "./Functions/checkIfCanLogIn"
+import "./Styles/Login.scss"
 
 const Login = (): JSX.Element => {
     const { loginUser } = useContext(TokenContext);
@@ -104,7 +103,6 @@ const Login = (): JSX.Element => {
                             type={EInputTypes.TEXT}
                             header='Email'
                         />
-                        <InputValidatorMessages inputValidator={validators.email} />
                     </div>
                     <div className='input-container'>
                         <FormInput
@@ -114,7 +112,6 @@ const Login = (): JSX.Element => {
                             header='Password'
                             headerChildren={isMobileView ? null : forgotPasswordHeader}
                         />
-                        <InputValidatorMessages inputValidator={validators.password} />
                     </div>
                     <Button
                         onClick={onLoginIn}
