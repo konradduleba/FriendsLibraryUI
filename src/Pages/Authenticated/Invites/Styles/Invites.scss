@@ -105,10 +105,10 @@
 
 @media screen and (max-width: 480px) {
     .invite-page-wrapper {
-        padding: 5*$base-pixel-size 3*$base-pixel-size 0;
+        padding: 0;
 
         .header {
-            flex-direction: column;
+            padding: 5*$base-pixel-size 3*$base-pixel-size 0;
 
             .search-wrapper {
                 margin-top: 2*$base-pixel-size;
@@ -119,9 +119,20 @@
             }
         }
 
+        .empty-list {
+            margin-top: 5*$base-pixel-size;
+            padding: 0 3*$base-pixel-size;
+            align-items: center;
+
+            p {
+                margin-bottom: 3*$base-pixel-size;
+            }
+        }
+
         .invite-list-container {
             grid-template-columns: 1fr 1fr;
             gap: 3*$base-pixel-size;
+            padding: 3*$base-pixel-size;
 
             .single-invite {
                 .picture-container {

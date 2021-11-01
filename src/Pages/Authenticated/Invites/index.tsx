@@ -9,6 +9,8 @@ import DisplayInviteList from "./Components/DisplayInviteList"
 import MessageToTheUser from "Components/MessageToTheUser"
 import IMessageToTheUser from "Components/MessageToTheUser/IMessageToTheUser"
 import './Styles/Invites.scss'
+import useWindowSize from "Utils/Functions/useWindowSize"
+import checkIsMobileView from "Utils/Functions/checkIsMobileView"
 
 const Invites = () => {
     const [inviteList, setInviteList] = useState<IInviteList[] | null>(null)
@@ -18,6 +20,8 @@ const Invites = () => {
         message: ''
     })
     const history = useHistory()
+    const { width } = useWindowSize()
+    const isMobileView = checkIsMobileView(width)
 
     useEffect(() => {
         const getData = async () => {
@@ -99,9 +103,10 @@ const Invites = () => {
 
     return (
         <div className='invite-page-wrapper'>
+            {isMobileView && <MessageToTheUser isSuccess={isSuccess} message={message} />}
             <div className='header'>
                 <h1>Invite List</h1>
-                <MessageToTheUser isSuccess={isSuccess} message={message} />
+                {!isMobileView && <MessageToTheUser isSuccess={isSuccess} message={message} />}
             </div>
             <DisplayInviteList
                 invites={inviteList}
