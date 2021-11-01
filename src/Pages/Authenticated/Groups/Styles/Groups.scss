@@ -83,8 +83,12 @@
 
             .single-group {
                 .picture-container {
+                    display: flex;
+                    justify-content: center;
+
                     img {
                         max-height: 75px;
+                        max-width: 80%;
                     }
                 }
 

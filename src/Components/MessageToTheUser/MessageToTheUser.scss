@@ -1,0 +1,16 @@
+@import "Utils/Styles/variables.scss";
+
+.error-message-container {
+    background-color: $error-message-color;
+}
+
+.error-message-container,
+.success-message-container {
+    width: 100%;
+    padding: 3.5*$base-pixel-size;
+    color: #FFF;
+}
+
+.success-message-container {
+    background-color: #44998F;
+}

@@ -15,14 +15,14 @@ import { EParentKeys } from './Types/EParentKeys'
 import checkValidation from 'Pages/Global/Register/Functions/checkValidation'
 import IValidators from './Types/IValidators'
 import checkIfThereAreSomeChanges from './Functions/checkIfThereAreSomeChanges'
-import IMessageToTheUser from 'Pages/Global/Register/Types/IMessageToTheUser'
 import checkIfThereIsNoValidationErrors from './Functions/checkIfThereIsNoValidationErrors'
-import MessageToTheUser from 'Pages/Global/Login/Components/MessageToTheUser'
 import useWindowSize from 'Utils/Functions/useWindowSize'
 import checkIsMobileView from 'Utils/Functions/checkIsMobileView'
 import './Styles/Profile.scss'
 import './Styles/ProfileMobile.scss'
 import moveToTopSmoothly from 'Utils/Functions/moveToTopSmoothly'
+import IMessageToTheUser from 'Components/MessageToTheUser/IMessageToTheUser'
+import MessageToTheUser from 'Components/MessageToTheUser'
 
 const initialValidators: IValidators = {
     email: [],

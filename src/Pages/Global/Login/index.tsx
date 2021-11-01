@@ -10,9 +10,9 @@ import checkIsMobileView from "Utils/Functions/checkIsMobileView"
 import { TokenContext } from "Context/Token"
 import IValidators from "./Types/IValidators"
 import checkValidation from "../Register/Functions/checkValidation"
-import MessageToTheUser from "./Components/MessageToTheUser"
-import IMessageToTheUser from "../Register/Types/IMessageToTheUser"
 import checkIfCanLogIn from "./Functions/checkIfCanLogIn"
+import IMessageToTheUser from "Components/MessageToTheUser/IMessageToTheUser"
+import MessageToTheUser from "Components/MessageToTheUser"
 import "./Styles/Login.scss"
 
 const Login = (): JSX.Element => {

@@ -1,5 +1,6 @@
 import React from 'react'
-import IMessageToTheUser from '../Types/IMessageToTheUser'
+import IMessageToTheUser from './IMessageToTheUser'
+import './MessageToTheUser.scss'
 
 const MessageToTheUser = (messageData: IMessageToTheUser) => {
     const { message, isSuccess } = messageData

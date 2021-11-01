@@ -9,13 +9,13 @@ import { Link } from 'react-router-dom'
 import checkIfCanCreateAccount from './Functions/checkIfCanCreateAccount'
 import sendRequest from 'Authentication/sendRequest'
 import EApiMethods from 'Utils/Types/EApiMethods'
-import IMessageToTheUser from './Types/IMessageToTheUser'
-import MessageToTheUser from './Components/MessageToTheUser'
 import InputValidatorMessages from './Components/InputValidatorMessages'
 import checkValidation from './Functions/checkValidation'
-import './Styles/Register.scss'
 import IValidators from './Types/IValidators'
 import GlobalPageTemplate from 'Templates/GlobalPage'
+import IMessageToTheUser from 'Components/MessageToTheUser/IMessageToTheUser'
+import MessageToTheUser from 'Components/MessageToTheUser'
+import './Styles/Register.scss'
 
 const Register = (): JSX.Element => {
     const [signUpCredentials, setSignUpCredentials] = useState<ISignUpCredentials>({

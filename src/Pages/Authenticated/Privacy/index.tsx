@@ -9,10 +9,10 @@ import PrivacyIcon from 'Assets/Icons/privacy-blue.svg'
 import PrivacyOpenIcon from 'Assets/Icons/privacy-open-blue.svg'
 import { setTimeout } from 'timers'
 import Profile from './Components/Profile'
-import './Styles/Privacy.scss'
 import Contact from './Components/Contact'
-import IMessageToTheUser from 'Pages/Global/Register/Types/IMessageToTheUser'
 import checkIfPrivacySettingsHaveChanged from './Functions/checkIfPrivacySettingsHaveChanged'
+import IMessageToTheUser from 'Components/MessageToTheUser/IMessageToTheUser'
+import './Styles/Privacy.scss'
 
 const UserPrivacy = () => {
     const [privacySettings, setPrivacySettings] = useState<IPrivacy | null>(null)

@@ -1,6 +1,7 @@
 import Dashboard from 'Pages/Authenticated/Dashboard';
 import Friends from 'Pages/Authenticated/Friends';
 import Groups from 'Pages/Authenticated/Groups';
+import Invites from 'Pages/Authenticated/Invites';
 import UserPrivacy from 'Pages/Authenticated/Privacy';
 import Profile from 'Pages/Authenticated/Profile';
 import UserSettings from 'Pages/Authenticated/Settings';
@@ -13,6 +14,7 @@ import { Switch, Route } from "react-router-dom";
 const Authenticated = () => (
     <Switch>
         <Route exact path='/my-profile' component={Profile} />
+        <Route exact path='/invite-list' component={Invites} />
         <Route exact path='/friends' component={Friends} />
         <Route exact path='/groups' component={Groups} />
         <Route exact path='/my-privacy' component={UserPrivacy} />
