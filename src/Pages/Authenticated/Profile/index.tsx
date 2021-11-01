@@ -42,6 +42,7 @@ const Profile = () => {
         message: '',
         isSuccess: false
     })
+    const [profilePicture, setProfilePicture] = useState<File | null>(null)
     const { width } = useWindowSize()
     const isMobileView = checkIsMobileView(width)
 
@@ -86,6 +87,79 @@ const Profile = () => {
     const { picture, lastname, name } = accountInfo
     const { aboutMe } = personalInfo
 
+    const updateProfileInfo = async (): Promise<boolean> => {
+        const { picture, ...info } = accountInfo
+
+        const data = {
+            ...profileData.contactInfo,
+            ...info,
+            ...profileData.basicInfo,
+            ...profileData.personalInfo
+        }
+
+        const result = await sendRequest(EApiMethods.PATCH, '/user/information', data)
+
+        if (!result) {
+            setMessageToTheUser({
+                isSuccess: false,
+                message: 'Something went wrong, try later'
+            })
+
+            return false
+        }
+
+        const { isSuccess } = result
+
+        if (!isSuccess) {
+            setMessageToTheUser({
+                isSuccess: false,
+                message: "Can not update your profile right now. Please try do it later"
+            })
+
+            return false
+        }
+
+        return true
+    }
+
+    const updateProfilePicture = async (): Promise<boolean> => {
+        if (!profilePicture) {
+            return false
+        }
+
+        const formData = new FormData()
+
+        formData.append('file', profilePicture)
+
+        const result = await sendRequest(EApiMethods.POST, '/user/profile-picture', formData)
+
+        if (!result) {
+            return false
+        }
+
+        const { isSuccess } = result
+
+        return isSuccess
+    }
+
+    const getNewProfileData = async () => {
+        const result = await sendRequest(EApiMethods.GET, '/user/information')
+
+        const { isSuccess, userData } = result;
+
+        if (!isSuccess) {
+            return null
+        }
+
+        setProfileData(userData)
+
+        setOriginalProfileData(userData)
+
+        setProfilePicture(null)
+
+        return setIsEditing(false)
+    }
+
     const onClickSubmit = async () => {
         const doesSomethingChanged = checkIfThereAreSomeChanges(originalProfileData, profileData)
 
@@ -93,7 +167,7 @@ const Profile = () => {
             moveToTopSmoothly()
         }
 
-        if (!doesSomethingChanged) {
+        if (!doesSomethingChanged && !profilePicture) {
             return setMessageToTheUser({
                 isSuccess: false,
                 message: "Why would you do that if there is no changes?"
@@ -109,45 +183,47 @@ const Profile = () => {
             })
         }
 
-        const { picture, ...info } = accountInfo
+        let status: boolean = false
 
-        const data = {
-            ...profileData.contactInfo,
-            ...info,
-            ...profileData.basicInfo,
-            ...profileData.personalInfo
+        if (!doesSomethingChanged && profilePicture) {
+            status = await updateProfilePicture()
+        }
+        else if (doesSomethingChanged && !profilePicture) {
+            status = await updateProfileInfo()
+        }
+        else {
+            status = await updateProfileInfo()
+
+            const profileStatus = await updateProfilePicture()
+
+            if (status) {
+                status = profileStatus
+            }
         }
 
-        const result = await sendRequest(EApiMethods.PATCH, '/user/information', data)
-
-        if (!result) {
-            return setMessageToTheUser({
+        if (status) {
+            setMessageToTheUser({
+                isSuccess: true,
+                message: "Your profile updated"
+            })
+        }
+        else {
+            setMessageToTheUser({
                 isSuccess: false,
-                message: 'Something went wrong, try later'
+                message: "Failed to update your profile"
             })
         }
 
-        const { isSuccess } = result
-
-        if (!isSuccess) {
-            return setMessageToTheUser({
-                isSuccess: false,
-                message: "Can not update your profile right now. Please try do it later"
-            })
-        }
-
-        setMessageToTheUser({
-            isSuccess: true,
-            message: "Your profile updated"
-        })
-
-        setIsEditing(false)
-
-        return setOriginalProfileData(profileData)
+        return await getNewProfileData()
     }
 
     const onClickPrimaryButton = () => {
         if (!isEditing) {
+            setMessageToTheUser({
+                isSuccess: false,
+                message: ""
+            })
+
             return setIsEditing(true)
         }
 
@@ -158,6 +234,8 @@ const Profile = () => {
         setProfileData(originalProfileData)
 
         setValidators(initialValidators)
+
+        setProfilePicture(null)
 
         setMessageToTheUser({
             isSuccess: false,
@@ -216,7 +294,14 @@ const Profile = () => {
                 </div>
                 <div className='profile-content'>
                     <div className='picture-and-about'>
-                        <Picture picture={picture} name={name} lastname={lastname} isEditing={isEditing} />
+                        <Picture
+                            picture={picture}
+                            name={name}
+                            lastname={lastname}
+                            isEditing={isEditing}
+                            profilePicture={profilePicture}
+                            setProfilePicture={setProfilePicture}
+                        />
                         <Intro aboutMe={aboutMe} />
                         <FriendsProfile friendList={friendList ? friendList : []} />
                     </div>
@@ -262,7 +347,14 @@ const Profile = () => {
             </div>
             <div className='profile-content'>
                 <div className='picture-and-about'>
-                    <Picture picture={picture} name={name} lastname={lastname} isEditing={isEditing} />
+                    <Picture
+                        picture={picture}
+                        name={name}
+                        lastname={lastname}
+                        isEditing={isEditing}
+                        profilePicture={profilePicture}
+                        setProfilePicture={setProfilePicture}
+                    />
                     <Intro aboutMe={aboutMe} />
                     <FriendsProfile friendList={friendList ? friendList : []} />
                 </div>

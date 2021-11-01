@@ -3,4 +3,6 @@ export default interface IPicture {
     name: string;
     lastname: string;
     isEditing: boolean;
+    profilePicture: File | null;
+    setProfilePicture: (value: File) => void;
 }
