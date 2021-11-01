@@ -1,4 +1,4 @@
-import IMessageToTheUser from "Pages/Global/Register/Types/IMessageToTheUser";
+import IMessageToTheUser from "Components/MessageToTheUser/IMessageToTheUser";
 import ITab from "./ITab";
 
 export default interface ISettingsTemplate {
