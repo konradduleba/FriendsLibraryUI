@@ -89,14 +89,8 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    // background-color: $error-message-color;
                     cursor: pointer;
                     border-left: 1px solid #C8D5DD;
-
-                    &:first-child {
-                        // background-color: #44998F;
-
-                    }
                 }
             }
         }
