@@ -4,7 +4,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: $base-pixel-size;
-    padding: 2*$base-pixel-size $base-pixel-size;
+    padding: 2*$base-pixel-size $base-pixel-size 0;
 
     .single-friend {
         border-radius: 4px;
@@ -13,7 +13,8 @@
 
         img {
             border-radius: 4px;
-            width: 100%;
+            width: 5*$base-pixel-size;
+            height: 5*$base-pixel-size;
         }
 
         p {

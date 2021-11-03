@@ -1,8 +1,9 @@
 import FormInput from "Components/Form/Input"
 import EInputTypes from "Components/Form/Input/Types/EInputTypes"
-import ISearch from "../Types/ISearch"
+import ISearch from "./ISearch"
+import './Search.scss'
 
-const GroupsSearch = ({ searchQuery, setSearchQuery }: ISearch) => (
+const FormSearch = ({ searchQuery, setSearchQuery }: ISearch) => (
     <div className='search-wrapper'>
         <FormInput
             onChange={setSearchQuery}
@@ -13,4 +14,4 @@ const GroupsSearch = ({ searchQuery, setSearchQuery }: ISearch) => (
     </div>
 )
 
-export default GroupsSearch
+export default FormSearch

@@ -1,0 +1,8 @@
+@import 'Utils/Styles/variables.scss';
+
+@media screen and (max-width: 480px) {
+    .search-wrapper {
+        padding: 2*$base-pixel-size $base-pixel-size $base-pixel-size 0;
+        width: 100%;
+    }
+}

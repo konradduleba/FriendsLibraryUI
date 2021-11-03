@@ -4,11 +4,14 @@ import { useEffect, useState } from 'react'
 import EApiMethods from 'Utils/Types/EApiMethods'
 import GroupsIcon from 'Assets/Icons/people-blue.svg'
 import { useHistory } from 'react-router'
-import GroupsSearch from './Components/Search'
 import filterGroupList from './Functions/filterGroupList'
 import IGroups from './Types/IFriends'
-import DisplayGroups from './Components/DisplayGroups'
 import './Styles/Groups.scss'
+import Button from 'Components/Button'
+import ESearchTypes from 'Utils/Types/ESearchTypes'
+import EButtonTypeList from 'Components/Button/Types/EButtonTypeList'
+import PersonList from 'Components/PersonList'
+import FormSearch from 'Components/Form/Search'
 
 const Groups = () => {
     const [groupList, setGroupList] = useState<IGroups[] | null>(null)
@@ -55,15 +58,30 @@ const Groups = () => {
         return history.push(`/group/${username}`)
     }
 
+    const emptyGroupList = (
+        <div className='empty-groups'>
+            <p>Your group list is empty.</p>
+            <Button
+                value='Find new group'
+                onClick={() => history.push(`/search/${ESearchTypes.GROUP}`)}
+                type={EButtonTypeList.GHOST_BLUE}
+            />
+        </div>
+    )
+
     return (
         <div className='group-page-wrapper'>
             <div className='header'>
-                <h1>Your Groups</h1>
-                <GroupsSearch searchQuery={searchQuery} setSearchQuery={onUpdateSearchQuery} />
+                <h1>Groups</h1>
+                <FormSearch
+                    searchQuery={searchQuery}
+                    setSearchQuery={onUpdateSearchQuery}
+                />
             </div>
-            <DisplayGroups
-                groups={groupList}
-                onClickGroup={onClickGroup}
+            <PersonList
+                list={groupList}
+                onClickResult={onClickGroup}
+                noResultContent={emptyGroupList}
             />
         </div>
     )

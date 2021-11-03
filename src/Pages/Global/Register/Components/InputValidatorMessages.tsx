@@ -1,7 +1,7 @@
 import React from 'react'
 import IInputValidatorMessages from '../Types/IInputValidatorMessages'
 import TicIcon from 'Assets/Icons/correct-tic.svg'
-import ErrorIcon from 'Assets/Icons/cancel-red.svg'
+import ErrorIcon from 'Assets/Icons/cancel-red-alt.svg'
 
 interface IInputValidatorMessagesComponent {
     inputValidator: IInputValidatorMessages[] | []

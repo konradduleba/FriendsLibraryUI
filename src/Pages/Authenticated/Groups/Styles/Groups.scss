@@ -7,56 +7,22 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        align-items: center;
 
-        .search-wrapper {
-
-            .input-content-container {
-                background-color: #FFF;
-            }
+        .input-content-container {
+            background-color: #FFF;
         }
     }
 
     .empty-groups {
-        margin-top: 5*$base-pixel-size;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
         align-items: center;
 
-        p {
-            margin-bottom: 3*$base-pixel-size;
-        }
-    }
-
-    .group-list-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-        gap: 5*$base-pixel-size;
-        row-gap: 5*$base-pixel-size;
-        margin-top: 3*$base-pixel-size;
-        padding-bottom: 3*$base-pixel-size;
-
-        .single-group {
-            width: 100%;
-            background-color: #FFF;
-            box-shadow: 0px 6px 16px rgba(54, 121, 157, 0.14);
-            border-radius: 4px;
-            cursor: pointer;
-
-            .picture-container {
-                padding: 3*$base-pixel-size;
-
-                img {
-                    width: 100%;
-                    border-radius: 4px;
-                    max-height: 200px;
-                }
-            }
-
-            p {
-                background-color: #3D8EBB;
-                padding: 2*$base-pixel-size 3*$base-pixel-size;
-                text-align: center;
-                color: #FFF;
-                border-radius: 0 0 4px 4px;
-            }
+        .button-wrapper {
+            margin-left: 3*$base-pixel-size;
         }
     }
 }
@@ -67,34 +33,23 @@
 
         .header {
             flex-direction: column;
+            align-items: flex-start;
 
-            .search-wrapper {
-                margin-top: 2*$base-pixel-size;
-
-                .input-content-container {
-                    background-color: #FFF;
-                }
+            .input-content-container {
+                background-color: #FFF;
             }
         }
 
-        .group-list-container {
-            grid-template-columns: 1fr 1fr;
-            gap: 3*$base-pixel-size;
+        .empty-groups {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
 
-            .single-group {
-                .picture-container {
-                    display: flex;
-                    justify-content: center;
-
-                    img {
-                        max-height: 75px;
-                        max-width: 80%;
-                    }
-                }
-
-                p {
-                    padding: $base-pixel-size 2*$base-pixel-size;
-                }
+            .button-wrapper {
+                margin-left: 0;
+                margin-top: 2*$base-pixel-size;
+                width: 100%;
             }
         }
     }

@@ -5,13 +5,16 @@ import EApiMethods from 'Utils/Types/EApiMethods'
 import IFriends from './Types/IFriends'
 import FriendsIcon from 'Assets/Icons/contact-book-blue.svg'
 import { useHistory } from 'react-router'
-import FriendsSearch from './Components/Search'
 import filterFriendList from './Functions/filterFriendList'
 import './Styles/Friends.scss'
-import DisplayFriends from './Components/DisplayFriends'
+import PersonList from 'Components/PersonList'
+import ESearchTypes from 'Utils/Types/ESearchTypes'
+import EButtonTypeList from 'Components/Button/Types/EButtonTypeList'
+import Button from 'Components/Button'
+import FormSearch from 'Components/Form/Search'
 
 const Friends = () => {
-    const [friendsList, setFriendsList] = useState<IFriends[] | null>(null)
+    const [friendsList, setFriendsList] = useState<IFriends[] | [] | null>(null)
     const [originalFriendList, setOriginalFriendList] = useState<IFriends[] | null>(null)
     const [displayReadyLoader, setDisplayReadyLoader] = useState<boolean>(false)
     const [searchQuery, setSearchQuery] = useState<string>('')
@@ -38,6 +41,8 @@ const Friends = () => {
     const onUpdateSearchQuery = (value: string) => {
         const filteredFriendList = filterFriendList(originalFriendList, value.toLowerCase())
 
+        console.log(filteredFriendList)
+
         setFriendsList(filteredFriendList)
 
         return setSearchQuery(value)
@@ -55,15 +60,28 @@ const Friends = () => {
         return history.push(`/people/${username}`)
     }
 
+    const emptyFriendList = <div className='empty-friends'>
+        <p>Your friend list is empty.</p>
+        <Button
+            value='Find new friend'
+            onClick={() => history.push(`/search/${ESearchTypes.USER}`)}
+            type={EButtonTypeList.GHOST_BLUE}
+        />
+    </div>
+
     return (
         <div className='friens-page-wrapper'>
             <div className='header'>
-                <h1>Friend List</h1>
-                <FriendsSearch searchQuery={searchQuery} setSearchQuery={onUpdateSearchQuery} />
+                <h1>Friends</h1>
+                <FormSearch
+                    searchQuery={searchQuery}
+                    setSearchQuery={onUpdateSearchQuery}
+                />
             </div>
-            <DisplayFriends
-                friends={friendsList}
-                onClickFriend={onClickFriend}
+            <PersonList
+                list={friendsList}
+                onClickResult={onClickFriend}
+                noResultContent={emptyFriendList}
             />
         </div>
     )

@@ -5,9 +5,9 @@ import { useHistory } from "react-router"
 import EApiMethods from "Utils/Types/EApiMethods"
 import GlobalIcon from 'Assets/Icons/earth-blue.svg'
 import IGlobalUsers from "./Types/IGlobalUsers"
-import DisplayUserList from "./Components/DisplayUserList"
 import Button from "Components/Button"
 import EButtonTypeList from "Components/Button/Types/EButtonTypeList"
+import PersonList from "Components/PersonList"
 import './Styles/GlobalUsers.scss'
 
 const GlobalUsers = () => {
@@ -39,7 +39,7 @@ const GlobalUsers = () => {
         return <Loader icon={GlobalIcon} ready />
     }
 
-    const onClickProfile = (username: string, isThatMe: boolean) => {
+    const onClickProfile = (username: string, isThatMe?: boolean) => {
         if (isThatMe) {
             return history.push('/my-profile')
         }
@@ -53,6 +53,8 @@ const GlobalUsers = () => {
         return setGlobalUsers(result)
     }
 
+    const emptyUser = <p>No users</p>
+
     return (
         <div className='global-users-page-wrapper'>
             <div className='header'>
@@ -63,9 +65,10 @@ const GlobalUsers = () => {
                     onClick={refreshUserList}
                 />
             </div>
-            <DisplayUserList
-                users={globalUsers}
-                onClickProfile={onClickProfile}
+            <PersonList
+                list={globalUsers}
+                onClickResult={onClickProfile}
+                noResultContent={emptyUser}
             />
         </div>
     )

@@ -5,12 +5,15 @@ import EApiMethods from "Utils/Types/EApiMethods"
 import IInviteList from "./Types/IInviteList"
 import InviteListIcon from 'Assets/Icons/person-add-blue.svg'
 import { useHistory } from "react-router"
-import DisplayInviteList from "./Components/DisplayInviteList"
 import MessageToTheUser from "Components/MessageToTheUser"
 import IMessageToTheUser from "Components/MessageToTheUser/IMessageToTheUser"
-import './Styles/Invites.scss'
 import useWindowSize from "Utils/Functions/useWindowSize"
 import checkIsMobileView from "Utils/Functions/checkIsMobileView"
+import Button from "Components/Button"
+import ESearchTypes from "Utils/Types/ESearchTypes"
+import EButtonTypeList from "Components/Button/Types/EButtonTypeList"
+import PersonList from "Components/PersonList"
+import './Styles/Invites.scss'
 
 const Invites = () => {
     const [inviteList, setInviteList] = useState<IInviteList[] | null>(null)
@@ -99,6 +102,17 @@ const Invites = () => {
         return history.push(`/people/${username}`)
     }
 
+    const emptyInvitesList = (
+        <div className='empty-invites'>
+            <p>Your invite list is empty.</p>
+            <Button
+                value='Find new people'
+                onClick={() => history.push(`/search/${ESearchTypes.USER}`)}
+                type={EButtonTypeList.GHOST_BLUE}
+            />
+        </div>
+    )
+
     const { isSuccess, message } = messageToTheUser
 
     return (
@@ -108,11 +122,13 @@ const Invites = () => {
                 <h1>Invite List</h1>
                 {!isMobileView && <MessageToTheUser isSuccess={isSuccess} message={message} />}
             </div>
-            <DisplayInviteList
-                invites={inviteList}
-                onAcceptInvite={onAcceptInvite}
-                onClickProfile={onClickProfile}
+            <PersonList
+                list={inviteList}
+                onClickResult={onClickProfile}
+                noResultContent={emptyInvitesList}
+                invites
                 onRemoveInvite={onRemoveInvite}
+                onAcceptInvite={onAcceptInvite}
             />
         </div>
     )

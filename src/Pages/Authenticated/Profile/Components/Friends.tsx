@@ -22,7 +22,6 @@ const FriendsProfile = ({ friendList }: IFriendsProfile) => {
                 {randomFriends.map(({ id, picture, name, lastname, username }) => (
                     <div className='single-friend' key={id} onClick={() => history.push(`/people/${username}`)}>
                         <img src={picture} alt={`${name} ${lastname}`} />
-                        {!isMobileView && <p>{name}</p>}
                     </div>
                 ))}
                 {friendList.length > 4 && <p className='friends-counter'>+ {friendList.length - 3}</p>}

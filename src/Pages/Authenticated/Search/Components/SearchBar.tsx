@@ -24,6 +24,7 @@ const SearchBar = ({ setSearchList }: ISearchBar) => {
         }
 
         query && getResults()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [query])
 
     const onSearchQuery = async () => {
