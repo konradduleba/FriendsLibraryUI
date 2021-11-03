@@ -10,8 +10,8 @@ const NotificationList = ({ list, onClick }: INotificationList) => {
 
     return (
         <>
-            {list.map(({ id, icon, description, title, date, status }) => (
-                <div className='single-notification' key={id} onClick={event => onClick(event, id)}>
+            {list.map(({ id, icon, title, date, status }) => (
+                <div className={`single-notification ${status === ENotificationStatus.NEW ? 'new-message' : ''}`} key={id} onClick={event => onClick(event, id)}>
                     <div className='header'>
                         <p>{status === ENotificationStatus.NEW && 'NEW'}</p>
                         <p>{parseDateToSelectedFormat(date, EParseDateMethods.HHMM)}</p>
@@ -20,7 +20,6 @@ const NotificationList = ({ list, onClick }: INotificationList) => {
                         <img src={icon} alt='notification' />
                         <div className='description'>
                             <p>{title}</p>
-                            <p>{description}</p>
                         </div>
                     </div>
                 </div>

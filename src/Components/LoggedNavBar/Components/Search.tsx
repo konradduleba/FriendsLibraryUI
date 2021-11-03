@@ -6,6 +6,7 @@ import FormInput from 'Components/Form/Input'
 import EInputTypes from 'Components/Form/Input/Types/EInputTypes'
 import { useHistory } from 'react-router'
 import '../Styles/Search.scss'
+import ESearchTypes from 'Utils/Types/ESearchTypes'
 
 const Search = () => {
     const [isActive, setIsActive] = useState<boolean>(false)
@@ -26,7 +27,7 @@ const Search = () => {
             return null
         }
 
-        return history.push(`/search/${query}`)
+        return history.push(`/search/${ESearchTypes.USER}/${query}`)
     }
 
     const onUpdateQuery = (value: string) => {
@@ -42,7 +43,7 @@ const Search = () => {
             return null
         }
 
-        return history.push(`/search/${query}`)
+        return history.push(`/search/${ESearchTypes.USER}/${query}`)
     }
 
     const onClickOutside = (event: FocusEvent) => {

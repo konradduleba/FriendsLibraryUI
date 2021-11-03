@@ -3,7 +3,7 @@ import HomeIcon from 'Assets/Icons/home.svg'
 import UserIcon from 'Assets/Icons/user.svg'
 import FriendIcon from 'Assets/Icons/contact-book.svg'
 import GroupsIcon from 'Assets/Icons/people.svg'
-import PartiesIcon from 'Assets/Icons/mystery-box.svg'
+// import PartiesIcon from 'Assets/Icons/mystery-box.svg'
 import MessagesIcon from 'Assets/Icons/message.svg'
 import SettingsIcon from 'Assets/Icons/settings.svg'
 import PrivacyIcon from 'Assets/Icons/privacy.svg'
@@ -17,7 +17,7 @@ import EarthWhiteIcon from 'Assets/Icons/earth-white.svg'
 import UserWhiteIcon from 'Assets/Icons/user-white.svg'
 import FriendsWhiteIcon from 'Assets/Icons/contact-book-white.svg'
 import GroupsWhiteIcon from 'Assets/Icons/people-white.svg'
-import PartiesWhiteIcon from 'Assets/Icons/mystery-box-white.svg'
+// import PartiesWhiteIcon from 'Assets/Icons/mystery-box-white.svg'
 import MessageWhiteIcon from 'Assets/Icons/message-white.svg'
 import SettingsWhiteIcon from 'Assets/Icons/settings-white.svg'
 import PrivacyWhiteIcon from 'Assets/Icons/privacy-white.svg'
@@ -35,6 +35,18 @@ export const menuList: IMenuList[] = [{
     whiteIcon: SearchWhiteIcon
 },
 {
+    icon: MessagesIcon,
+    path: '/messages',
+    title: 'Messages',
+    whiteIcon: MessageWhiteIcon
+},
+{
+    icon: UserIcon,
+    path: '/my-profile',
+    title: 'Profile',
+    whiteIcon: UserWhiteIcon
+},
+{
     icon: InviteIcon,
     path: '/invite-list',
     title: 'Invite List',
@@ -45,12 +57,6 @@ export const menuList: IMenuList[] = [{
     path: '/global',
     title: 'Global',
     whiteIcon: EarthWhiteIcon
-},
-{
-    icon: UserIcon,
-    path: '/my-profile',
-    title: 'Profile',
-    whiteIcon: UserWhiteIcon
 },
 {
     icon: FriendIcon,
@@ -64,18 +70,12 @@ export const menuList: IMenuList[] = [{
     title: 'Groups',
     whiteIcon: GroupsWhiteIcon
 },
-{
-    icon: PartiesIcon,
-    path: '/parties',
-    title: 'Parties',
-    whiteIcon: PartiesWhiteIcon
-},
-{
-    icon: MessagesIcon,
-    path: '/messages',
-    title: 'Messages',
-    whiteIcon: MessageWhiteIcon
-},
+// {
+//     icon: PartiesIcon,
+//     path: '/parties',
+//     title: 'Parties',
+//     whiteIcon: PartiesWhiteIcon
+// },
 {
     icon: SettingsIcon,
     path: '/settings',

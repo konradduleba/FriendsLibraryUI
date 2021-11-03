@@ -5,6 +5,7 @@ import Groups from 'Pages/Authenticated/Groups';
 import Invites from 'Pages/Authenticated/Invites';
 import UserPrivacy from 'Pages/Authenticated/Privacy';
 import Profile from 'Pages/Authenticated/Profile';
+import Search from 'Pages/Authenticated/Search';
 import UserSettings from 'Pages/Authenticated/Settings';
 import About from 'Pages/Global/About';
 import Faq from 'Pages/Global/Faq';
@@ -15,6 +16,7 @@ import { Switch, Route } from "react-router-dom";
 const Authenticated = () => (
     <Switch>
         <Route exact path='/my-profile' component={Profile} />
+        <Route exact path='/search/:type?/:query?' component={Search} />
         <Route exact path='/global' component={GlobalUsers} />
         <Route exact path='/invite-list' component={Invites} />
         <Route exact path='/friends' component={Friends} />
