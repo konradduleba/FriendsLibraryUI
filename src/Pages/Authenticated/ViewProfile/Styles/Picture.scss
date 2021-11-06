@@ -1,0 +1,35 @@
+@import 'Utils/Styles/variables.scss';
+
+.picture-wrapper {
+    text-align: center;
+    border-bottom: 1.5px solid #D4E2EA;
+
+    .picture {
+        padding: 5*$base-pixel-size 5*$base-pixel-size 2*$base-pixel-size;
+
+        img {
+            border-radius: 4px;
+            width: 100%;
+        }
+    }
+
+    p {
+        word-break: break-all;
+        color: #3A495F;
+        font-size: 20px;
+        font-family: 'MontserratBold';
+        margin-bottom: 3*$base-pixel-size;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .picture-wrapper {
+        background-color: #FFF;
+
+        .picture {
+            img {
+                width: 70%;
+            }
+        }
+    }
+}

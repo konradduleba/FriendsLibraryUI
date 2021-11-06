@@ -108,10 +108,10 @@
 
 @media screen and (max-width: 480px) {
     .invite-page-wrapper {
-        padding: 5*$base-pixel-size 3*$base-pixel-size 3*$base-pixel-size;
+        padding: 0;
 
         .header {
-            padding: 0;
+            padding: 5*$base-pixel-size 3*$base-pixel-size 3*$base-pixel-size;
 
             .search-wrapper {
                 margin-top: 2*$base-pixel-size;
@@ -133,6 +133,10 @@
                 margin-top: 2*$base-pixel-size;
                 width: 100%;
             }
+        }
+
+        .person-list-wrapper {
+            margin: 0 3*$base-pixel-size;
         }
 
         .invite-list-container {

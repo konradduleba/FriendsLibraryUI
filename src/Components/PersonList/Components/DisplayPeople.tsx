@@ -16,7 +16,7 @@ const DisplayPeople = ({ list, isMobileView, onClickResult, onRemoveInvite, onAc
                         <div className='picture-container' onClick={() => isMobileView ? onClickResult(username!) : null}>
                             <img src={picture} alt='' />
                         </div>
-                        <p onClick={() => isMobileView ? onClickResult(username!) : null}>{name} {lastname}</p>
+                        <p onClick={() => onClickResult(username!)}>{name} {lastname}</p>
                         <div className='invite-options-container'>
                             <div className='single-option' onClick={() => onAcceptInvite!(username!)}>
                                 <img

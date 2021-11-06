@@ -1,0 +1,38 @@
+@import "Utils/Styles/variables.scss";
+
+.move-back-container {
+    position: absolute;
+    margin: 4*$base-pixel-size 17*$base-pixel-size;
+    left: 0;
+    top: 0;
+
+    .back-content {
+        width: fit-content;
+        height: 6*$base-pixel-size;
+        padding: 0 3*$base-pixel-size;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        img {
+            height: 1.5*$base-pixel-size;
+        }
+
+        p {
+            color: #7E94A1;
+            font-family: 'MontserratBold';
+            margin-left: $base-pixel-size;
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .move-back-container {
+        position: static;
+        margin: 3*$base-pixel-size 0 0;
+
+        .back-content {
+            width: 100%;
+        }
+    }
+}

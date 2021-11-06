@@ -1,8 +1,8 @@
 @import 'Utils/Styles/variables.scss';
 
-.my-profile-wrapper-mobile {
+.view-profile-wrapper-mobile {
     .header {
-        padding: 5*$base-pixel-size 3*$base-pixel-size;
+        padding: 2*$base-pixel-size 3*$base-pixel-size 5*$base-pixel-size;
 
         .options {
             margin-top: 3*$base-pixel-size;
@@ -15,15 +15,10 @@
 
     .profile-content {
         padding: 0 3*$base-pixel-size 3*$base-pixel-size;
-
-        .button-wrapper {
-            margin: 0;
-            margin-top: 5*$base-pixel-size;
-        }
     }
 
     .button-wrapper {
-        margin: 0 3*$base-pixel-size 3*$base-pixel-size;
+        margin-top: 5*$base-pixel-size;
 
         .secondary {
             background-color: $error-message-color;
@@ -44,5 +39,32 @@
 
     .success-message-container {
         background-color: #44998F;
+    }
+
+    .remove {
+        .button-wrapper {
+            .primary {
+                background-color: $error-message-color;
+                border-color: $error-message-color;
+            }
+        }
+    }
+
+    .sended {
+        .button-wrapper {
+            .primary {
+                background-color: #44998F;
+                border-color: #44998F;
+            }
+        }
+    }
+
+    .invite {
+        .button-wrapper {
+            .primary {
+                background-color: #E9C538;
+                border-color: #E9C538;
+            }
+        }
     }
 }

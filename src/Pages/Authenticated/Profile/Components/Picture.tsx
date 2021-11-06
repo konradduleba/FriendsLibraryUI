@@ -7,7 +7,7 @@ const Picture = ({ picture, name, lastname, isEditing, profilePicture, setProfil
         return (
             <div className='picture-wrapper'>
                 <div className='picture'>
-                    <img src={picture} alt={`${name} ${lastname}`} />
+                    <img src={picture} alt='' />
                 </div>
                 <p>{name} {lastname}</p>
             </div>

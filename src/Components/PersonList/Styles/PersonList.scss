@@ -41,7 +41,6 @@
         .single-invite {
             display: grid;
             grid-template-columns: 40px 1fr 60px;
-            gap: 3*$base-pixel-size;
             align-items: center;
             background-color: #FFF;
             border-radius: 4px;
@@ -49,8 +48,13 @@
             border: 1px solid #C8D5DD;
 
             p {
+                height: 100%;
+                display: flex;
+                align-items: center;
                 font-family: 'MontserratBold';
                 color: #0F2633;
+                margin-left: 3*$base-pixel-size;
+                cursor: pointer;
             }
 
             .picture-container {

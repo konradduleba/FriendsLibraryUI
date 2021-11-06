@@ -284,13 +284,6 @@ const Profile = () => {
                 <MessageToTheUser isSuccess={isSuccess} message={message} />
                 <div className='header'>
                     <h1>My Profile</h1>
-                    {!isEditing && <div className='options'>
-                        <Button
-                            onClick={onClickPrimaryButton}
-                            value="Edit Information"
-                            type={EButtonTypeList.PRIMARY}
-                        />
-                    </div>}
                 </div>
                 <div className='profile-content'>
                     <div className='picture-and-about'>
@@ -305,6 +298,13 @@ const Profile = () => {
                         <Intro aboutMe={aboutMe} />
                         <FriendsProfile friendList={friendList ? friendList : []} />
                     </div>
+                    {!isEditing && <div className='options'>
+                        <Button
+                            onClick={onClickPrimaryButton}
+                            value="Edit Information"
+                            type={EButtonTypeList.PRIMARY}
+                        />
+                    </div>}
                     <InfoTabs
                         profileInfo={profileData}
                         isEditing={isEditing}

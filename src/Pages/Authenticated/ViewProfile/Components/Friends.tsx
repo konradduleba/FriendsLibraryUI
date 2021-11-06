@@ -1,9 +1,9 @@
-import displayLimitedFriends from "../Functions/displayLimitedFriends"
-import IFriendsProfile from "../Types/IFriendsProfile"
 import '../Styles/Friends.scss'
 import { useHistory } from "react-router"
 import useWindowSize from "Utils/Functions/useWindowSize"
 import checkIsMobileView from "Utils/Functions/checkIsMobileView"
+import IFriendsProfile from 'Pages/Authenticated/Profile/Types/IFriendsProfile'
+import displayLimitedFriends from 'Pages/Authenticated/Profile/Functions/displayLimitedFriends'
 
 const FriendsProfile = ({ friendList }: IFriendsProfile) => {
     const history = useHistory()
@@ -19,7 +19,7 @@ const FriendsProfile = ({ friendList }: IFriendsProfile) => {
         <div className='friends-wrapper'>
             <h1>Friends</h1>
             <div className='friend-list'>
-                {randomFriends.map(({ id, picture, username }) => (
+                {randomFriends.map(({ id, picture, name, lastname, username }) => (
                     <div className='single-friend' key={id} onClick={() => history.push(`/people/${username}`)}>
                         <img src={picture} alt='' />
                     </div>
