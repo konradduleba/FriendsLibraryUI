@@ -54,8 +54,8 @@ const Groups = () => {
         return <Loader icon={GroupsIcon} ready />
     }
 
-    const onClickGroup = (username: string) => {
-        return history.push(`/group/${username}`)
+    const onClickGroup = (name: string) => {
+        return history.push(`/group/${name}`)
     }
 
     const emptyGroupList = (
@@ -82,6 +82,7 @@ const Groups = () => {
                 list={groupList}
                 onClickResult={onClickGroup}
                 noResultContent={emptyGroupList}
+                displayGroup
             />
         </div>
     )

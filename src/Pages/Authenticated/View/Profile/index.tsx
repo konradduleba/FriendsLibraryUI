@@ -7,7 +7,6 @@ import { useParams } from 'react-router'
 import checkIsMobileView from 'Utils/Functions/checkIsMobileView'
 import useWindowSize from 'Utils/Functions/useWindowSize'
 import EApiMethods from 'Utils/Types/EApiMethods'
-import IFriends from '../Friends/Types/IFriends'
 import InfoTabs from './Components/InfoTabs'
 import './Styles/Profile.scss'
 import './Styles/ProfileMobile.scss'
@@ -23,6 +22,7 @@ import checkInviteStatus from './Functions/checkInviteStatus'
 import ICheckInviteStatus from './Types/ICheckInviteStatus'
 import moveToTopSmoothly from 'Utils/Functions/moveToTopSmoothly'
 import MoveBack from 'Components/MoveBack'
+import IFriends from 'Pages/Authenticated/Friends/Types/IFriends'
 
 const ViewProfile = () => {
     const [profileData, setProfileData] = useState<IProfile | null>(null)

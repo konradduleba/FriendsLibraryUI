@@ -9,12 +9,12 @@ const DisplayGroups = ({ list, isMobileView, onClickResult }: IDisplayGroups) =>
     return (
         <div className='list-container'>
             {list.map(({ id, picture, name }) => (
-                <div className='single-result' key={id} onClick={() => isMobileView ? onClickResult(id) : null}>
+                <div className='single-result' key={id} onClick={() => isMobileView ? onClickResult(name) : null}>
                     <div className='picture-container'>
                         <img src={picture} alt='' />
                     </div>
                     <p>{name}</p>
-                    <div className='view-person-container' onClick={() => onClickResult(id)}>
+                    <div className='view-person-container' onClick={() => onClickResult(name)}>
                         <img
                             src={ArrowIcon}
                             alt='view'

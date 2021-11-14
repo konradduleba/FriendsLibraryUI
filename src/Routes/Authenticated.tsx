@@ -7,7 +7,8 @@ import UserPrivacy from 'Pages/Authenticated/Privacy';
 import Profile from 'Pages/Authenticated/Profile';
 import Search from 'Pages/Authenticated/Search';
 import UserSettings from 'Pages/Authenticated/Settings';
-import ViewProfile from 'Pages/Authenticated/ViewProfile';
+import ViewGroup from 'Pages/Authenticated/View/Group';
+import ViewProfile from 'Pages/Authenticated/View/Profile';
 import About from 'Pages/Global/About';
 import Faq from 'Pages/Global/Faq';
 import Privacy from 'Pages/Global/Privacy';
@@ -18,6 +19,7 @@ const Authenticated = () => (
     <Switch>
         <Route exact path='/my-profile' component={Profile} />
         <Route exact path='/people/:username' component={ViewProfile} />
+        <Route exact path='/group/:name' component={ViewGroup} />
         <Route exact path='/search/:type?/:query?' component={Search} />
         <Route exact path='/global' component={GlobalUsers} />
         <Route exact path='/invite-list' component={Invites} />

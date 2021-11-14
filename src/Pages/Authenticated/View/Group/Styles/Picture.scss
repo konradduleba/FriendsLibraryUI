@@ -1,0 +1,42 @@
+@import 'Utils/Styles/variables.scss';
+
+.group-picture {
+    text-align: center;
+    border-bottom: 1.5px solid #D4E2EA;
+
+    .picture {
+        padding: 5*$base-pixel-size 5*$base-pixel-size 2*$base-pixel-size;
+
+        img {
+            border-radius: 4px;
+            width: 100%;
+        }
+    }
+
+    p {
+        color: #3A495F;
+        font-family: 'MontserratBold';
+        border-bottom: 1.5 px solid #D4E2EA;
+    }
+
+    a {
+        margin: $base-pixel-size;
+        display: flex;
+        justify-content: center;
+        padding: $base-pixel-size 0;
+        color: $link-color;
+        user-select: none;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .group-picture {
+        background-color: #FFF;
+
+        .picture {
+            img {
+                width: 70%;
+            }
+        }
+    }
+}

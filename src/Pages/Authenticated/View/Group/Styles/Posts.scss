@@ -1,0 +1,137 @@
+@import 'Utils/Styles/variables.scss';
+
+.posts-container {
+    .single-post {
+        background-color: #FFF;
+        box-shadow: 0px 6px 16px rgba(54, 121, 157, 0.14);
+        border-radius: 4px;
+        margin-bottom: 3*$base-pixel-size;
+
+        .post-info {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2*$base-pixel-size 3*$base-pixel-size;
+
+            .title {
+                color: #3A495F;
+                font-family: 'MontserratBold';
+                font-size: 3*$base-pixel-size;
+            }
+
+            .date-and-author {
+                display: flex;
+
+                p {
+                    &:first-child {
+                        margin-right: $base-pixel-size;
+                    }
+                }
+
+                a {
+                    color: $link-color;
+                }
+            }
+        }
+
+        .post-content {
+            padding: 0 3*$base-pixel-size 2*$base-pixel-size;
+
+            p {
+                color: #3A495F;
+            }
+        }
+
+        .options {
+            display: flex;
+            flex-direction: row;
+            padding: 0 2*$base-pixel-size $base-pixel-size;
+
+
+            .add-comment-input-wrapper {
+                padding: 0 $base-pixel-size $base-pixel-size;
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                .creation-options {
+                    display: flex;
+                    flex-direction: row;
+                    margin-left: 5*$base-pixel-size;
+
+                    .button-wrapper {
+                        button {
+                            &.secondary {
+                                margin-left: 3*$base-pixel-size;
+                                background-color: $error-message-color;
+                                border-color: $error-message-color;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .add-comment {
+                display: flex;
+                flex-direction: row;
+                padding: $base-pixel-size;
+                align-items: center;
+                cursor: pointer;
+            }
+
+            img {
+                margin-right: $base-pixel-size;
+            }
+
+            p {
+                color: $link-color;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .posts-container {
+        .single-post {
+            .post-info {
+                flex-direction: column;
+                align-items: flex-start;
+
+                .date-and-author {
+                    margin-top: $base-pixel-size;
+                    flex-direction: column;
+
+                    p {
+                        &:first-child {
+                            margin-right: 0;
+                        }
+                    }
+                }
+            }
+
+            .options {
+                .add-comment-input-wrapper {
+                    flex-direction: column;
+                    margin-bottom: $base-pixel-size;
+
+                    .creation-options {
+                        flex-direction: column;
+                        margin: 0;
+
+                        .button-wrapper {
+                            margin-top: 2*$base-pixel-size;
+
+                            button {
+                                &.secondary {
+                                    margin-left: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
